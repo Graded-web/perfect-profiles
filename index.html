@@ -15,21 +15,31 @@
   .hero-pin { height: 180vh; position: relative; }
   .hero-stage {
     position: sticky; top: 0; height: 100dvh;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    text-align: center; overflow: hidden; padding: 0 24px;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; padding: 0 24px;
   }
-  .hero-inner { display: flex; flex-direction: column; align-items: center; will-change: transform, opacity; }
+  .hero-inner {
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 56px;
+    max-width: 1280px; width: 100%; margin: 0 auto; will-change: transform, opacity;
+  }
+  .hero-left { text-align: left; }
   .hero h1 {
-    font-size: clamp(40px, 7vw, 104px); line-height: 0.98; letter-spacing: -0.03em;
-    max-width: 16ch;
+    font-size: clamp(38px, 5.5vw, 80px); line-height: 0.98; letter-spacing: -0.03em;
+    max-width: 14ch;
   }
   .hero h1 em { font-style: italic; color: var(--accent); }
-  .hero .lede { margin: 28px auto 0; text-align: center; font-size: 19px; }
-  .hero-ctas { display: flex; align-items: center; gap: 28px; margin-top: 40px; flex-wrap: wrap; justify-content: center; }
+  .hero .lede { margin: 24px 0 0; text-align: left; font-size: 18px; max-width: 46ch; }
+  .hero-ctas { display: flex; align-items: center; gap: 28px; margin-top: 36px; flex-wrap: wrap; justify-content: flex-start; }
   .scroll-cue {
     position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
     font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
   }
+
+  .hero-right { position: relative; height: 480px; }
+  .hero-card { position: absolute; border-radius: 14px; overflow: hidden; box-shadow: 0 24px 60px -20px rgba(10,10,10,0.35); }
+  .hero-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hero-card.a { width: 62%; aspect-ratio: 3/4; top: 0; right: 8%; z-index: 2; }
+  .hero-card.b { width: 44%; aspect-ratio: 3/4; bottom: 0; left: 0; z-index: 3; }
 
   .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
   .step { padding: 32px; border: 1px solid var(--line); border-radius: 14px; }
@@ -58,6 +68,20 @@
   @media (max-width: 860px) {
     .steps, .stats .wrap, .portfolio-teaser .grid { grid-template-columns: 1fr 1fr; }
     .differentiator { grid-template-columns: 1fr; }
+    /* stacked images make hero content taller than one screen, so the
+       pinned/sticky scroll-fade treatment no longer fits — fall back to
+       a normal top-aligned block that clears the fixed nav. */
+    .hero-pin { height: auto; }
+    .hero-stage {
+      position: static; height: auto; min-height: 100dvh; overflow: visible;
+      align-items: flex-start; padding: calc(var(--nav-h) + 40px) 24px 48px;
+    }
+    .hero-inner { grid-template-columns: 1fr; text-align: center; }
+    .hero-left { text-align: center; }
+    .hero .lede { margin: 24px auto 0; text-align: center; }
+    .hero-ctas { justify-content: center; }
+    .hero-right { height: 360px; margin-top: 8px; }
+    .scroll-cue { display: none; }
   }
   @media (max-width: 560px) {
     .steps, .stats .wrap, .portfolio-teaser .grid { grid-template-columns: 1fr; }
@@ -90,15 +114,20 @@
   <section class="hero hero-pin">
     <div class="hero-stage">
       <div class="hero-inner">
-        <h1>
-          <span class="mask"><span class="line">We shoot your</span></span>
-          <span class="mask"><span class="line">whole team's headshots</span></span>
-          <span class="mask"><span class="line">— <em>in a day.</em></span></span>
-        </h1>
-        <p class="lede curtain-reveal">One photographer, one studio setup, your office. Every employee gets a consistent, professional headshot without leaving the building.</p>
-        <div class="hero-ctas curtain-reveal">
-          <a href="contact.html" class="btn">Get a quote</a>
-          <a href="portfolio.html" class="link-quiet">See the work</a>
+        <div class="hero-left">
+          <h1>
+            <span class="mask"><span class="line">Professional headshots</span></span>
+            <span class="mask"><span class="line">Made easy</span></span>
+          </h1>
+          <p class="lede curtain-reveal">One photographer, one studio setup, your office. Every employee gets a consistent, professional headshot without leaving the building.</p>
+          <div class="hero-ctas curtain-reveal">
+            <a href="contact.html" class="btn">Get a quote</a>
+            <a href="portfolio.html" class="link-quiet">See the work</a>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="hero-card a"><img class="bw-img" src="https://picsum.photos/seed/shoot-hero-a/600/800" alt="Headshot sample"></div>
+          <div class="hero-card b"><img class="bw-img" src="https://picsum.photos/seed/shoot-hero-b/480/640" alt="Headshot sample"></div>
         </div>
       </div>
       <span class="scroll-cue">Scroll</span>
