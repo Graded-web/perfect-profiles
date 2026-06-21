@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.classList.add('js');</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Portfolio — Shoot</title>
+<meta name="description" content="Sample headshots from recent Shoot engagements across industries and team sizes." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/css/base.css">
+<style>
+  .page-hero { padding: calc(var(--nav-h) + 56px) 0 32px; }
+  .page-hero h1 { font-size: clamp(38px, 6vw, 72px); max-width: 18ch; }
+
+  .gallery {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+  }
+  .gallery figure {
+    position: relative; margin: 0; aspect-ratio: 4/5; border-radius: 10px; overflow: hidden;
+  }
+  .gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform 500ms var(--ease); }
+  .gallery figure:hover img { transform: scale(1.05); }
+  .gallery figcaption {
+    position: absolute; inset: auto 0 0 0; padding: 16px 14px;
+    background: linear-gradient(to top, rgba(10,10,10,0.78), transparent);
+    color: #fff; font-size: 13px; letter-spacing: 0.01em;
+    opacity: 0; transform: translateY(6px);
+    transition: opacity 250ms ease, transform 250ms ease;
+  }
+  .gallery figure:hover figcaption { opacity: 1; transform: none; }
+  .gallery figcaption strong { display: block; font-size: 13.5px; font-weight: 600; }
+  .gallery figcaption span { color: rgba(255,255,255,0.75); }
+
+  .cta-band { text-align: center; background: var(--paper-soft); border-radius: 24px; padding: clamp(48px, 8vw, 96px) clamp(20px, 4vw, 40px); }
+  .cta-band h2 { max-width: 20ch; margin: 0 auto 28px; }
+
+  @media (max-width: 980px) { .gallery { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 680px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="progress"></div>
+
+<header class="bar is-hidden-init">
+  <a href="index.html" class="logo">Shoot</a>
+  <button class="menu-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  <nav class="links">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="portfolio.html" class="active">Portfolio</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="cta-link">Get a quote</a>
+  </nav>
+</header>
+
+<main>
+  <section class="page-hero wrap hero">
+    <span class="eyebrow fade-up">Portfolio</span>
+    <h1>
+      <span class="mask"><span class="line">Recent work,</span></span>
+      <span class="mask"><span class="line">across industries.</span></span>
+    </h1>
+    <p class="lede fade-up" style="margin-top:24px;">A sample of headshots from recent shoot days. Client names are kept private — the consistency is the point.</p>
+  </section>
+
+  <section class="section" style="padding-top: 16px;">
+    <div class="wrap">
+      <div class="gallery fade-up-stagger">
+        <figure><img class="bw-img" src="https://picsum.photos/seed/shoot-p1/520/650" alt="Headshot sample" loading="lazy"><figcaption><strong>Financial services</strong><span>340 employees · 3 offices</span></figcaption></figure>
+        <figure><img class="bw-img" src="https://picsum.photos/seed/shoot-p2/520/650" alt="Headshot sample" loading="lazy"><figcaption><strong>SaaS / technology</strong><span>120 employees · 1 office</span></figcaption></figure>
+        <figure><img class="bw-img" src="https://picsum.photos/seed/shoot-p3/520/650" alt="Headshot sample" loading="lazy"><figcaption><strong>Healthcare</strong><span>610 employees · 6 offices</span></figcaption></figure>
+        <figure><img class="bw-img" src="https://picsum.photos/seed/shoot-p4/520/650" alt="Headshot sample" loading="lazy"><figcaption><strong>Professional services</strong><span>85 employees · 1 office</span></figcaption></figure>
+        <figure><img class="bw-img" src="https://picsum.photos/seed/shoot-p5/520/650" alt="Headshot sample" loading="lazy"><figcaption><strong>Retail HQ</strong><span>210 employees · 2 offices</span></figcaption></figure>
+        <figure><img class="bw-img" src="https://picsum.photos/seed/shoot-p6/520/650" alt="Headshot sample" loading="lazy"><figcaption><strong>Manufacturing</strong><span>430 employees · 4 offices</span></figcaption></figure>
+        <figure><img class="bw-img" src="https://picsum.photos/seed/shoot-p7/520/650" alt="Headshot sample" loading="lazy"><figcaption><strong>Logistics</strong><span>275 employees · 5 offices</span></figcaption></figure>
+        <figure><img class="bw-img" src="https://picsum.photos/seed/shoot-p8/520/650" alt="Headshot sample" loading="lazy"><figcaption><strong>Insurance</strong><span>540 employees · 3 offices</span></figcaption></figure>
+        <figure><img class="bw-img" src="https://picsum.photos/seed/shoot-p9/520/650" alt="Headshot sample" loading="lazy"><figcaption><strong>Media &amp; publishing</strong><span>95 employees · 1 office</span></figcaption></figure>
+        <figure><img class="bw-img" src="https://picsum.photos/seed/shoot-p10/520/650" alt="Headshot sample" loading="lazy"><figcaption><strong>Consulting</strong><span>160 employees · 2 offices</span></figcaption></figure>
+        <figure><img class="bw-img" src="https://picsum.photos/seed/shoot-p11/520/650" alt="Headshot sample" loading="lazy"><figcaption><strong>Energy</strong><span>320 employees · 3 offices</span></figcaption></figure>
+        <figure><img class="bw-img" src="https://picsum.photos/seed/shoot-p12/520/650" alt="Headshot sample" loading="lazy"><figcaption><strong>Education</strong><span>140 employees · 1 office</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="cta-band fade-up">
+        <h2>Want your team to look like this?</h2>
+        <a href="contact.html" class="btn btn-dark">Get a quote</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="index.html" class="logo">Shoot</a>
+        <p>On-site corporate headshot photography for teams of any size, anywhere your offices are.</p>
+      </div>
+      <div class="foot-links">
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Service</h4>
+          <ul>
+            <li><a href="services.html">How it works</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Shoot. All rights reserved.</span>
+      <span>Made for teams who'd rather not do this in a hallway.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

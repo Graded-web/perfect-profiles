@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.classList.add('js');</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pricing — Shoot</title>
+<meta name="description" content="How Shoot pricing works for corporate headshot days — based on team size, locations, and turnaround." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/css/base.css">
+<style>
+  .page-hero { padding: calc(var(--nav-h) + 56px) 0 32px; }
+  .page-hero h1 { font-size: clamp(38px, 6vw, 72px); max-width: 20ch; }
+
+  .drivers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .driver { padding: 32px; border: 1px solid var(--line); border-radius: 14px; }
+  .driver h3 { margin-bottom: 10px; }
+  .driver p { font-size: 15.5px; }
+
+  .included { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px 40px; }
+  .included li { list-style: none; display: flex; gap: 14px; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .included li .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-top: 8px; flex-shrink: 0; }
+
+  .faq details {
+    border-bottom: 1px solid var(--line); padding: 22px 0;
+  }
+  .faq summary {
+    font-family: var(--serif); font-size: 19px; cursor: pointer; list-style: none;
+    display: flex; justify-content: space-between; align-items: center; color: var(--ink);
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; font-size: 22px; color: var(--accent); transition: transform 200ms var(--ease); }
+  .faq details[open] summary::after { transform: rotate(45deg); }
+  .faq details p { margin-top: 14px; max-width: 64ch; }
+
+  .cta-band { text-align: center; background: var(--paper-soft); border-radius: 24px; padding: clamp(48px, 8vw, 96px) clamp(20px, 4vw, 40px); }
+  .cta-band h2 { max-width: 20ch; margin: 0 auto 28px; }
+
+  @media (max-width: 860px) {
+    .drivers, .included { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="progress"></div>
+
+<header class="bar is-hidden-init">
+  <a href="index.html" class="logo">Shoot</a>
+  <button class="menu-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  <nav class="links">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="pricing.html" class="active">Pricing</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="cta-link">Get a quote</a>
+  </nav>
+</header>
+
+<main>
+  <section class="page-hero wrap hero">
+    <span class="eyebrow fade-up">Pricing</span>
+    <h1>
+      <span class="mask"><span class="line">Simple, scalable pricing</span></span>
+      <span class="mask"><span class="line">for teams of any size.</span></span>
+    </h1>
+    <p class="lede fade-up" style="margin-top:24px;">There's no fixed price list — every engagement gets quoted against your actual team size and locations. Here's what drives the number.</p>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="drivers fade-up-stagger">
+        <div class="driver">
+          <h3>Team size</h3>
+          <p>Larger headcounts bring the per-person cost down — a 500-person shoot day costs less per employee than a 50-person one.</p>
+        </div>
+        <div class="driver">
+          <h3>Number of locations</h3>
+          <p>Each additional office adds photographer travel and setup time. We quote multi-location engagements as one coordinated package, not separate bookings.</p>
+        </div>
+        <div class="driver">
+          <h3>Turnaround speed</h3>
+          <p>Our standard delivery is 48 hours. Need it faster for an all-hands or a launch? Rush turnaround is available for an added fee.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head fade-up">
+        <span class="eyebrow">What's included, at every price point</span>
+        <h2>No add-on fees for the basics.</h2>
+      </div>
+      <ul class="included fade-up-stagger">
+        <li><span class="dot"></span>Photographer travel and full studio setup</li>
+        <li><span class="dot"></span>Self-serve employee scheduling link</li>
+        <li><span class="dot"></span>Retouching and color-matching on every photo</li>
+        <li><span class="dot"></span>LinkedIn, Slack, and directory-sized exports</li>
+        <li><span class="dot"></span>One full-resolution master per employee</li>
+        <li><span class="dot"></span>A single point of contact for the whole engagement</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap" style="max-width: 760px;">
+      <div class="section-head fade-up">
+        <span class="eyebrow">FAQ</span>
+        <h2>Common questions</h2>
+      </div>
+      <div class="faq fade-up">
+        <details>
+          <summary>How is the price actually calculated?</summary>
+          <p>We quote a flat day rate per location based on your headcount, plus travel for any offices outside our base cities. You'll get one number for the whole engagement before you commit — no per-person surprises afterward.</p>
+        </details>
+        <details>
+          <summary>Do you offer a minimum or maximum team size?</summary>
+          <p>We've shot teams from 15 people to 600+ in a single engagement. Below about 15, a day rate usually doesn't make sense — we'll tell you upfront if that's the case for your team.</p>
+        </details>
+        <details>
+          <summary>What if some employees are remote or miss the shoot day?</summary>
+          <p>We can schedule a short make-up session on a follow-up visit, or point remote employees to a vetted local photographer using our same retouching specs, so the final result still matches.</p>
+        </details>
+        <details>
+          <summary>Can we get a faster turnaround than 48 hours?</summary>
+          <p>Yes — rush delivery (24 hours, or same-day for smaller teams) is available for an added fee. Mention your deadline when you request a quote.</p>
+        </details>
+        <details>
+          <summary>Do you require a deposit?</summary>
+          <p>We'll cover deposit terms when we send your quote — it varies by engagement size. Nothing is charged before you've approved a quote in writing.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="cta-band fade-up">
+        <h2>Tell us your team size and locations — we'll send a number.</h2>
+        <a href="contact.html" class="btn btn-dark">Get a quote</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="index.html" class="logo">Shoot</a>
+        <p>On-site corporate headshot photography for teams of any size, anywhere your offices are.</p>
+      </div>
+      <div class="foot-links">
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Service</h4>
+          <ul>
+            <li><a href="services.html">How it works</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Shoot. All rights reserved.</span>
+      <span>Made for teams who'd rather not do this in a hallway.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

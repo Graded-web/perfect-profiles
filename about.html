@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.classList.add('js');</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About — Shoot</title>
+<meta name="description" content="Why Shoot exists, and what we believe about consistent corporate headshots at scale." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/css/base.css">
+<style>
+  .page-hero { padding: calc(var(--nav-h) + 56px) 0 32px; }
+  .page-hero h1 { font-size: clamp(38px, 6vw, 72px); max-width: 18ch; }
+
+  .mission { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .mission img { border-radius: 14px; aspect-ratio: 4/5; object-fit: cover; width: 100%; }
+
+  .stats { background: var(--ink); color: var(--paper); }
+  .stats .wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; text-align: center; }
+  .stats h3 { font-size: clamp(36px, 5vw, 56px); color: var(--paper); margin-bottom: 10px; }
+  .stats p { color: rgba(255,255,255,0.65); font-size: 15px; }
+
+  .values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .value { padding: 32px; border: 1px solid var(--line); border-radius: 14px; }
+  .value h3 { margin-bottom: 10px; }
+  .value p { font-size: 15.5px; }
+
+  .cta-band { text-align: center; background: var(--paper-soft); border-radius: 24px; padding: clamp(48px, 8vw, 96px) clamp(20px, 4vw, 40px); }
+  .cta-band h2 { max-width: 20ch; margin: 0 auto 28px; }
+
+  @media (max-width: 860px) {
+    .mission, .values, .stats .wrap { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="progress"></div>
+
+<header class="bar is-hidden-init">
+  <a href="index.html" class="logo">Shoot</a>
+  <button class="menu-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  <nav class="links">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="about.html" class="active">About</a>
+    <a href="contact.html" class="cta-link">Get a quote</a>
+  </nav>
+</header>
+
+<main>
+  <section class="page-hero wrap hero">
+    <span class="eyebrow fade-up">About</span>
+    <h1>
+      <span class="mask"><span class="line">A headshot day,</span></span>
+      <span class="mask"><span class="line">done properly.</span></span>
+    </h1>
+  </section>
+
+  <section class="section">
+    <div class="wrap mission">
+      <div class="fade-up">
+        <span class="eyebrow">Why we started this</span>
+        <h2>The 3% problem.</h2>
+        <p class="lede" style="margin-top:20px;">At most companies, only a small fraction of employees ever get a proper headshot — usually whoever happened to ask, or whoever's been there long enough to have one from an old all-hands photo booth. Everyone else is on LinkedIn with a cropped vacation photo, or nothing at all.</p>
+        <p class="lede" style="margin-top:16px;">We built Shoot because fixing that shouldn't require booking a studio, scheduling a half-day off-site, or hiring a different photographer for every office. It should be: we show up, your team shows up for sixty seconds each, everyone leaves with a photo that looks like it belongs next to everyone else's.</p>
+      </div>
+      <img class="bw-img fade-up" src="https://picsum.photos/seed/shoot-about-1/700/860" alt="Photographer reviewing shots on a camera">
+    </div>
+  </section>
+
+  <section class="stats section">
+    <div class="wrap">
+      <div class="fade-up">
+        <h3>40+</h3>
+        <p>companies shot since we started</p>
+      </div>
+      <div class="fade-up">
+        <h3>12,000+</h3>
+        <p>employee headshots delivered</p>
+      </div>
+      <div class="fade-up">
+        <h3>9</h3>
+        <p>countries we've sent a photographer to</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head fade-up">
+        <span class="eyebrow">What we believe</span>
+        <h2>A few things we won't compromise on.</h2>
+      </div>
+      <div class="values fade-up-stagger">
+        <div class="value">
+          <h3>Consistency over flair</h3>
+          <p>Every employee gets the same lighting, crop, and retouch — not whichever angle happened to look best that day. The directory matters more than any single photo.</p>
+        </div>
+        <div class="value">
+          <h3>Respect the schedule</h3>
+          <p>Sixty seconds means sixty seconds. We don't hold up someone's calendar to get a better shot — we get a good shot fast and let them get back to work.</p>
+        </div>
+        <div class="value">
+          <h3>One point of contact</h3>
+          <p>Whoever books us is talking to the same person from quote to delivery — not bounced between sales, scheduling, and a separate retouching vendor.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="cta-band fade-up">
+        <h2>Let's fix your team's photo problem.</h2>
+        <a href="contact.html" class="btn btn-dark">Get a quote</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="index.html" class="logo">Shoot</a>
+        <p>On-site corporate headshot photography for teams of any size, anywhere your offices are.</p>
+      </div>
+      <div class="foot-links">
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Service</h4>
+          <ul>
+            <li><a href="services.html">How it works</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Shoot. All rights reserved.</span>
+      <span>Made for teams who'd rather not do this in a hallway.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.classList.add('js');</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shoot — Corporate headshots for your whole team, in a day</title>
+<meta name="description" content="Shoot sends a photographer and full studio setup to your office and photographs your entire team in a single day. Consistent, professional headshots, delivered fast." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/css/base.css">
+<style>
+  .hero-pin { height: 180vh; position: relative; }
+  .hero-stage {
+    position: sticky; top: 0; height: 100dvh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; overflow: hidden; padding: 0 24px;
+  }
+  .hero-inner { display: flex; flex-direction: column; align-items: center; will-change: transform, opacity; }
+  .hero h1 {
+    font-size: clamp(40px, 7vw, 104px); line-height: 0.98; letter-spacing: -0.03em;
+    max-width: 16ch;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero .lede { margin: 28px auto 0; text-align: center; font-size: 19px; }
+  .hero-ctas { display: flex; align-items: center; gap: 28px; margin-top: 40px; flex-wrap: wrap; justify-content: center; }
+  .scroll-cue {
+    position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+  }
+
+  .trusted { padding: 56px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .trusted .label { font-size: 13px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 28px; text-align: center; }
+  .trusted .row { display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(28px, 5vw, 64px); }
+  .trusted .row span {
+    font-family: var(--sans); font-weight: 700; letter-spacing: 0.1em; font-size: 16px;
+    color: var(--muted); text-transform: uppercase; opacity: 0.75;
+  }
+
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .step { padding: 32px; border: 1px solid var(--line); border-radius: 14px; }
+  .step .num { font-family: var(--serif); font-size: 36px; color: var(--accent); margin-bottom: 18px; }
+  .step h3 { margin-bottom: 10px; }
+  .step p { font-size: 15.5px; }
+
+  .stats { background: var(--ink); color: var(--paper); }
+  .stats .wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; text-align: center; }
+  .stats h3 { font-size: clamp(36px, 5vw, 56px); color: var(--paper); margin-bottom: 10px; }
+  .stats p { color: rgba(255,255,255,0.65); font-size: 15px; }
+
+  .portfolio-teaser .grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+  }
+  .portfolio-teaser .grid a { border-radius: 10px; overflow: hidden; aspect-ratio: 4/5; display: block; position: relative; }
+  .portfolio-teaser .grid img { width: 100%; height: 100%; object-fit: cover; transition: transform 500ms var(--ease); }
+  .portfolio-teaser .grid a:hover img { transform: scale(1.04); }
+
+  .differentiator { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .differentiator img { border-radius: 14px; aspect-ratio: 4/5; object-fit: cover; width: 100%; }
+
+  .cta-band { text-align: center; background: var(--paper-soft); border-radius: 24px; padding: clamp(48px, 8vw, 96px) clamp(20px, 4vw, 40px); }
+  .cta-band h2 { max-width: 20ch; margin: 0 auto 28px; }
+
+  @media (max-width: 860px) {
+    .steps, .stats .wrap, .portfolio-teaser .grid { grid-template-columns: 1fr 1fr; }
+    .differentiator { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .steps, .stats .wrap, .portfolio-teaser .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="progress"></div>
+
+<div class="curtain">
+  <span class="wordmark">Shoot</span>
+</div>
+
+<header class="bar is-hidden-init">
+  <a href="index.html" class="logo">Shoot</a>
+  <button class="menu-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  <nav class="links">
+    <a href="index.html" class="active">Home</a>
+    <a href="services.html">Services</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="cta-link">Get a quote</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero hero-pin">
+    <div class="hero-stage">
+      <div class="hero-inner">
+        <h1>
+          <span class="mask"><span class="line">We shoot your</span></span>
+          <span class="mask"><span class="line">whole team's headshots</span></span>
+          <span class="mask"><span class="line">— <em>in a day.</em></span></span>
+        </h1>
+        <p class="lede">One photographer, one studio setup, your office. Every employee gets a consistent, professional headshot without leaving the building.</p>
+        <div class="hero-ctas">
+          <a href="contact.html" class="btn">Get a quote</a>
+          <a href="portfolio.html" class="link-quiet">See the work</a>
+        </div>
+      </div>
+      <span class="scroll-cue">Scroll</span>
+    </div>
+  </section>
+
+  <section class="trusted">
+    <div class="wrap">
+      <p class="label">Trusted by people teams at</p>
+      <div class="row">
+        <span>Northwind</span>
+        <span>Acme Group</span>
+        <span>Vantage &amp; Co</span>
+        <span>Holloway Partners</span>
+        <span>Meridian</span>
+        <span>Fenwick Ltd</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head fade-up">
+        <span class="eyebrow">How it works</span>
+        <h2>No studio booking. No day out of office. Just a camera in the break room.</h2>
+      </div>
+      <div class="steps fade-up-stagger">
+        <div class="step">
+          <div class="num">01</div>
+          <h3>We come to you</h3>
+          <p>Our photographer brings a full studio setup — lighting, backdrop, reflector — straight to your office. No commute, no studio booking.</p>
+        </div>
+        <div class="step">
+          <div class="num">02</div>
+          <h3>Every employee, same day</h3>
+          <p>Sixty-second sessions, back to back. A 200-person office wraps in a single day, with time slots your team books themselves.</p>
+        </div>
+        <div class="step">
+          <div class="num">03</div>
+          <h3>Fast, consistent delivery</h3>
+          <p>Every photo gets the same retouching and color treatment, delivered within 48 hours and sized for LinkedIn, Slack, and your directory.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats section">
+    <div class="wrap">
+      <div class="fade-up">
+        <h3>500+</h3>
+        <p>headshots shot in a single day, at our largest engagement</p>
+      </div>
+      <div class="fade-up">
+        <h3>48 hrs</h3>
+        <p>from last shutter click to finished, retouched files</p>
+      </div>
+      <div class="fade-up">
+        <h3>0</h3>
+        <p>days of office disruption — we work around your team's schedule</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section portfolio-teaser">
+    <div class="wrap">
+      <div class="section-head fade-up">
+        <span class="eyebrow">Recent work</span>
+        <h2>A consistent look, however big the team.</h2>
+      </div>
+      <div class="grid fade-up-stagger">
+        <a href="portfolio.html"><img class="bw-img" src="https://picsum.photos/seed/shoot-1/640/800" alt="Headshot sample 1" loading="lazy"></a>
+        <a href="portfolio.html"><img class="bw-img" src="https://picsum.photos/seed/shoot-2/640/800" alt="Headshot sample 2" loading="lazy"></a>
+        <a href="portfolio.html"><img class="bw-img" src="https://picsum.photos/seed/shoot-3/640/800" alt="Headshot sample 3" loading="lazy"></a>
+        <a href="portfolio.html"><img class="bw-img" src="https://picsum.photos/seed/shoot-4/640/800" alt="Headshot sample 4" loading="lazy"></a>
+        <a href="portfolio.html"><img class="bw-img" src="https://picsum.photos/seed/shoot-5/640/800" alt="Headshot sample 5" loading="lazy"></a>
+        <a href="portfolio.html"><img class="bw-img" src="https://picsum.photos/seed/shoot-6/640/800" alt="Headshot sample 6" loading="lazy"></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap differentiator">
+      <img class="bw-img fade-up" src="https://picsum.photos/seed/shoot-diff/700/860" alt="Studio lighting setup in an office">
+      <div class="fade-up">
+        <span class="eyebrow">Why it works</span>
+        <h2>One look, every office.</h2>
+        <p class="lede" style="margin-top:20px;">Same lighting rig, same backdrop, same retouching pass — whether we're shooting your HQ or a 40-person satellite office three timezones away. Your directory looks like one company, not a patchwork of whoever happened to have a decent webcam.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="cta-band fade-up">
+        <h2>Ready to put your whole team in front of the camera?</h2>
+        <a href="contact.html" class="btn btn-dark">Get a quote</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="index.html" class="logo">Shoot</a>
+        <p>On-site corporate headshot photography for teams of any size, anywhere your offices are.</p>
+      </div>
+      <div class="foot-links">
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Service</h4>
+          <ul>
+            <li><a href="services.html">How it works</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Shoot. All rights reserved.</span>
+      <span>Made for teams who'd rather not do this in a hallway.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.classList.add('js');</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Page not found — Shoot</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/css/base.css">
+<style>
+  .notfound {
+    min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 0 24px;
+  }
+  .notfound .code { font-family: var(--serif); font-size: clamp(72px, 14vw, 160px); line-height: 1; color: var(--accent); }
+  .notfound h1 { margin-top: 12px; font-size: clamp(24px, 3vw, 32px); }
+  .notfound p { margin-top: 14px; }
+  .notfound a.btn { margin-top: 32px; }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header class="bar is-hidden-init">
+  <a href="index.html" class="logo">Shoot</a>
+  <nav class="links">
+    <a href="index.html">Home</a>
+    <a href="contact.html" class="cta-link">Get a quote</a>
+  </nav>
+</header>
+
+<main class="notfound">
+  <span class="code">404</span>
+  <h1>That page doesn't exist.</h1>
+  <p>The page you're looking for may have moved or never existed.</p>
+  <a href="index.html" class="btn">Back to home</a>
+</main>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
