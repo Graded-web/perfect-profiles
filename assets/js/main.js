@@ -132,7 +132,16 @@
     var pin = document.querySelector(".hero-pin");
     var inner = document.querySelector(".hero-inner");
     if (!pin || !inner || reduceMotion) return;
+    /* matches the breakpoint where .hero-stage drops sticky pinning in CSS —
+       below it the hero is a normal block, so the scroll-driven fade/scale
+       (tuned for the 180vh pinned distance) no longer makes sense. */
+    var mq = window.matchMedia("(max-width: 860px)");
     function update() {
+      if (mq.matches) {
+        inner.style.opacity = "";
+        inner.style.transform = "";
+        return;
+      }
       var rect = pin.getBoundingClientRect();
       var scrollable = pin.offsetHeight - window.innerHeight;
       if (scrollable <= 0) return;
