@@ -3,11 +3,28 @@
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ── nav: drop-in on load, blur/background once scrolled ── */
+  /* ── coordinates curtain (if present) with nav/hero reveals so the page
+     visibly animates in as the curtain clears, instead of the curtain
+     lifting off a page that already finished animating underneath ── */
+  var pageReveal = (function () {
+    var listeners = [];
+    var fired = false;
+    function fire() {
+      if (fired) return;
+      fired = true;
+      listeners.forEach(function (fn) { fn(); });
+    }
+    return {
+      onReveal: function (fn) { fired ? fn() : listeners.push(fn); },
+      fire: fire
+    };
+  })();
+
+  /* ── nav: drop-in once the page is revealed, blur/background once scrolled ── */
   function initNav() {
     var bar = document.querySelector(".bar");
     if (!bar) return;
-    requestAnimationFrame(function () {
+    pageReveal.onReveal(function () {
       bar.classList.remove("is-hidden-init");
     });
     function onScroll() {
@@ -48,8 +65,14 @@
     if (!masks.length) return;
 
     var heroMasks = document.querySelectorAll(".hero .mask, .curtain-gate .mask");
-    heroMasks.forEach(function (m, i) {
-      setTimeout(function () { m.classList.add("is-revealed"); }, 150 + i * 110);
+    pageReveal.onReveal(function () {
+      heroMasks.forEach(function (m, i) {
+        setTimeout(function () { m.classList.add("is-revealed"); }, i * 110);
+      });
+      var heroExtras = document.querySelectorAll(".hero .curtain-reveal");
+      heroExtras.forEach(function (el, i) {
+        setTimeout(function () { el.classList.add("is-visible"); }, 260 + heroMasks.length * 110 + i * 90);
+      });
     });
 
     var observed = Array.prototype.filter.call(masks, function (m) {
@@ -82,17 +105,26 @@
     items.forEach(function (el) { io.observe(el); });
   }
 
-  /* ── curtain intro: Home only ── */
+  /* ── curtain intro: Home only. Fires pageReveal as it lifts, so the nav
+     and hero animate in while/just after the curtain clears, rather than
+     revealing a page that already finished animating underneath. ── */
   function initCurtain() {
     var curtain = document.querySelector(".curtain");
-    if (!curtain) return;
+    if (!curtain) {
+      pageReveal.fire();
+      return;
+    }
+    if (reduceMotion) {
+      pageReveal.fire();
+      return;
+    }
     requestAnimationFrame(function () {
       curtain.classList.add("show-mark");
     });
-    var delay = reduceMotion ? 0 : 1100;
     setTimeout(function () {
       curtain.classList.add("lift");
-    }, delay);
+      pageReveal.fire();
+    }, 900);
   }
 
   /* ── pinned hero: fade/scale the inner content as it scrolls past ── */
