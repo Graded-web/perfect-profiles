@@ -38,9 +38,13 @@
     if (toggle && links) {
       toggle.addEventListener("click", function () {
         links.classList.toggle("is-open");
+        bar.classList.toggle("menu-open", links.classList.contains("is-open"));
       });
       links.querySelectorAll("a").forEach(function (a) {
-        a.addEventListener("click", function () { links.classList.remove("is-open"); });
+        a.addEventListener("click", function () {
+          links.classList.remove("is-open");
+          bar.classList.remove("menu-open");
+        });
       });
     }
   }
