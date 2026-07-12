@@ -1,185 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>document.documentElement.classList.add('js');</script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Services — Shoot</title>
-<meta name="description" content="How a Shoot headshot day works: logistics, on-site setup, the shoot itself, retouching, and delivery." />
+<title>Services — Perfect Profiles</title>
+<meta name="description" content="How a Perfect Profiles shoot day works: logistics, on-site setup, the shoot itself, retouching, and delivery." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340..400;1,9..144,340..400&family=Albert+Sans:wght@400;500&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-<link rel="stylesheet" href="assets/css/base.css">
-<style>
-  .page-hero { padding: calc(var(--nav-h) + 56px) 0 32px; }
-  .page-hero h1 { font-size: clamp(38px, 6vw, 72px); max-width: 18ch; }
-
-  .timeline { display: flex; flex-direction: column; gap: 0; }
-  .timeline .item { display: grid; grid-template-columns: 90px 1fr; gap: 28px; padding: 32px 0; border-top: 1px solid var(--line); }
-  .timeline .item:last-child { border-bottom: 1px solid var(--line); }
-  .timeline .item .step-no { font-family: var(--serif); font-size: 28px; color: var(--accent); }
-  .timeline .item h3 { margin-bottom: 8px; }
-  .timeline .item p { max-width: 60ch; }
-
-  .included { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px 40px; }
-  .included li { list-style: none; display: flex; gap: 14px; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid var(--line); }
-  .included li .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-top: 8px; flex-shrink: 0; }
-
-  .logistics { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
-  .logistics img { border-radius: 14px; aspect-ratio: 4/5; object-fit: cover; width: 100%; }
-
-  .cta-band { text-align: center; background: var(--paper-soft); border-radius: 24px; padding: clamp(48px, 8vw, 96px) clamp(20px, 4vw, 40px); }
-  .cta-band h2 { max-width: 20ch; margin: 0 auto 28px; }
-
-  @media (max-width: 860px) {
-    .included, .logistics { grid-template-columns: 1fr; }
-    .timeline .item { grid-template-columns: 56px 1fr; }
-  }
-</style>
+<link rel="stylesheet" href="assets/css/lx.css">
 </head>
-<body>
+<body class="lx">
 
-<div class="grain"></div>
-<div class="progress"></div>
-
-<header class="bar is-hidden-init">
-  <a href="index.html" class="logo">Shoot</a>
-  <button class="menu-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-  <nav class="links">
-    <a href="index.html">Home</a>
-    <a href="services.html" class="active">Services</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="pricing.html">Pricing</a>
-    <a href="about.html">About</a>
-    <a href="contact.html" class="cta-link">Get a quote</a>
-  </nav>
+<header class="lx-nav">
+  <div class="lx-container lx-nav-inner">
+    <a href="index.html" class="lx-wordmark">Perfect Profiles</a>
+    <nav class="lx-nav-links" aria-label="Main">
+      <a href="services.html" aria-current="page">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="about.html">About</a>
+    </nav>
+    <a href="contact.html" class="lx-nav-cta">Request a quote</a>
+  </div>
 </header>
 
 <main>
-  <section class="page-hero wrap hero">
-    <span class="eyebrow fade-up">Services</span>
-    <h1>
-      <span class="mask"><span class="line">How a shoot</span></span>
-      <span class="mask"><span class="line">day works.</span></span>
-    </h1>
-    <p class="lede fade-up" style="margin-top:24px;">From the first scheduling email to the moment retouched files hit your team's inbox — here's exactly what happens.</p>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <div class="timeline">
-        <div class="item fade-up">
-          <span class="step-no">01</span>
-          <div>
-            <h3>Pre-shoot logistics</h3>
-            <p>We confirm headcount, locations, and dates, then send a self-serve booking link so employees pick their own 60-second slot. No spreadsheets, no chasing people down.</p>
-          </div>
-        </div>
-        <div class="item fade-up">
-          <span class="step-no">02</span>
-          <div>
-            <h3>On-site setup</h3>
-            <p>Our photographer arrives early and sets up a full studio rig — key light, fill light, backdrop, reflector — in a meeting room or quiet corner. Typically ready within 30 minutes.</p>
-          </div>
-        </div>
-        <div class="item fade-up">
-          <span class="step-no">03</span>
-          <div>
-            <h3>Shoot day</h3>
-            <p>Employees show up for their slot, we shoot a short burst of frames per person, and they're back at their desk in under a minute. We keep pace with the booking schedule so no one waits.</p>
-          </div>
-        </div>
-        <div class="item fade-up">
-          <span class="step-no">04</span>
-          <div>
-            <h3>Retouching &amp; QA</h3>
-            <p>Every employee's best frame gets the same color grade, crop, and light retouch pass, then a human review to make sure nothing looks off before it ships.</p>
-          </div>
-        </div>
-        <div class="item fade-up">
-          <span class="step-no">05</span>
-          <div>
-            <h3>Delivery</h3>
-            <p>Finished headshots land within 48 hours, pre-sized for LinkedIn, Slack, and your employee directory, plus one full-resolution master per person.</p>
-          </div>
-        </div>
-      </div>
+  <section class="lx-page-hero">
+    <div class="lx-container">
+      <p class="lx-kicker">Services</p>
+      <h1 class="lx-h1 lx-h1-page" aria-label="How a shoot day works.">
+        <span class="lx-line"><span style="--lx-d: 120ms">How a shoot day <em>works.</em></span></span>
+      </h1>
+      <p class="lx-hero-sub">
+        From the first scheduling email to the moment retouched files reach
+        your team's inbox — here is exactly what happens.
+      </p>
     </div>
   </section>
 
-  <section class="section">
-    <div class="wrap">
-      <div class="section-head fade-up">
-        <span class="eyebrow">What's included</span>
-        <h2>Everything you need, nothing you have to chase down.</h2>
+  <section class="lx-section" style="border-top: 0">
+    <div class="lx-container">
+      <ol class="lx-step-rows">
+        <li class="lx-step-row">
+          <span class="lx-step-no">№ 01</span>
+          <div>
+            <h3>Pre-shoot logistics</h3>
+            <p class="lx-step-copy">We confirm headcount, locations, and dates, then send a self-serve booking link so employees pick their own sixty-second slot. No spreadsheets, no chasing people down.</p>
+          </div>
+        </li>
+        <li class="lx-step-row">
+          <span class="lx-step-no">№ 02</span>
+          <div>
+            <h3>On-site setup</h3>
+            <p class="lx-step-copy">Our photographer arrives early and sets up a full studio rig — key light, fill light, backdrop, reflector — in a meeting room or quiet corner. Typically ready within thirty minutes.</p>
+          </div>
+        </li>
+        <li class="lx-step-row">
+          <span class="lx-step-no">№ 03</span>
+          <div>
+            <h3>The shoot day</h3>
+            <p class="lx-step-copy">Employees show up for their slot, we shoot a short burst of frames per person, and they are back at their desk in under a minute. We keep pace with the booking schedule so no one waits.</p>
+          </div>
+        </li>
+        <li class="lx-step-row">
+          <span class="lx-step-no">№ 04</span>
+          <div>
+            <h3>Retouching &amp; review</h3>
+            <p class="lx-step-copy">Every employee's best frame receives the same color grade, crop, and light retouch pass, then a human review to make sure nothing looks off before it ships.</p>
+          </div>
+        </li>
+        <li class="lx-step-row">
+          <span class="lx-step-no">№ 05</span>
+          <div>
+            <h3>Delivery</h3>
+            <p class="lx-step-copy">Finished headshots land within 48 hours, sized for LinkedIn, Slack, and your employee directory, plus one full-resolution master per person.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="lx-section">
+    <div class="lx-container">
+      <div class="lx-section-head">
+        <p class="lx-kicker">What's included</p>
+        <h2 class="lx-h2">Everything you need, nothing you have to chase down.</h2>
       </div>
-      <ul class="included fade-up-stagger">
-        <li><span class="dot"></span>Full studio lighting setup, brought on-site</li>
-        <li><span class="dot"></span>Choice of two backdrop options</li>
-        <li><span class="dot"></span>Self-serve scheduling link for employees</li>
-        <li><span class="dot"></span>Retouching and color-matching on every photo</li>
-        <li><span class="dot"></span>LinkedIn, Slack, and directory-sized exports</li>
-        <li><span class="dot"></span>One full-resolution master file per employee</li>
-        <li><span class="dot"></span>48-hour delivery from last shutter click</li>
-        <li><span class="dot"></span>A single point of contact for the whole engagement</li>
+      <ul class="lx-included">
+        <li>Full studio lighting setup, brought on-site</li>
+        <li>Choice of two backdrop options</li>
+        <li>Self-serve scheduling link for employees</li>
+        <li>Retouching and color-matching on every photo</li>
+        <li>LinkedIn, Slack, and directory-sized exports</li>
+        <li>One full-resolution master file per employee</li>
+        <li>48-hour delivery from last shutter click</li>
+        <li>A single point of contact for the whole engagement</li>
       </ul>
     </div>
   </section>
 
-  <section class="section">
-    <div class="wrap logistics">
-      <div class="fade-up">
-        <span class="eyebrow">For large &amp; multi-location teams</span>
-        <h2>One vendor, every office.</h2>
-        <p class="lede" style="margin-top:20px;">We coordinate scheduling across as many offices and time zones as you need, with the same photographer-and-setup standard at each stop — so your directory looks consistent company-wide, not stitched together office by office.</p>
+  <section class="lx-dark">
+    <div class="lx-container">
+      <div class="lx-section-head">
+        <p class="lx-kicker lx-kicker-dark">For large &amp; multi-location teams</p>
+        <h2 class="lx-h2 lx-h2-dark">One vendor, <em>every office.</em></h2>
       </div>
-      <img class="bw-img fade-up" src="https://loremflickr.com/700/860/photographer,studio,lighting?lock=33" alt="Photographer setting up studio lighting">
+      <dl class="lx-provenance">
+        <div class="lx-prov-row">
+          <dt>Coordination</dt>
+          <dd>One schedule across as many offices and time zones as you need — quoted and run as a single engagement.</dd>
+        </div>
+        <div class="lx-prov-row">
+          <dt>Consistency</dt>
+          <dd>The same photographer-and-setup standard at every stop, so the directory reads company-wide, not office by office.</dd>
+        </div>
+        <div class="lx-prov-row">
+          <dt>Stragglers</dt>
+          <dd>Make-up sessions on a follow-up visit, or a vetted local photographer working to our retouching specs for remote staff.</dd>
+        </div>
+      </dl>
     </div>
   </section>
 
-  <section class="section">
-    <div class="wrap">
-      <div class="cta-band fade-up">
-        <h2>Get a quote tailored to your team size and locations.</h2>
-        <a href="contact.html" class="btn btn-dark">Get a quote</a>
+  <section class="lx-cta">
+    <div class="lx-container lx-cta-inner">
+      <h2 class="lx-h2">A quote tailored to your team size and locations.</h2>
+      <div class="lx-hero-actions" style="margin-top: 0">
+        <a href="contact.html" class="lx-button">Request a quote</a>
+        <a href="pricing.html" class="lx-link-quiet">How pricing works</a>
       </div>
     </div>
   </section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <div class="foot-top">
-      <div class="foot-brand">
-        <a href="index.html" class="logo">Shoot</a>
-        <p>On-site corporate headshot photography for teams of any size, anywhere your offices are.</p>
-      </div>
-      <div class="foot-links">
-        <div>
-          <h4>Company</h4>
-          <ul>
-            <li><a href="about.html">About</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Service</h4>
-          <ul>
-            <li><a href="services.html">How it works</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="foot-bottom">
-      <span>© 2026 Shoot. All rights reserved.</span>
-      <span>Made for teams who'd rather not do this in a hallway.</span>
-    </div>
+<footer class="lx-footer">
+  <div class="lx-container lx-footer-inner">
+    <a href="index.html" class="lx-wordmark">Perfect Profiles</a>
+    <nav class="lx-footer-links" aria-label="Footer">
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <span class="lx-footer-note">On site, anywhere your offices are — © 2026 Perfect Profiles</span>
   </div>
 </footer>
 
-<script src="assets/js/main.js"></script>
 </body>
 </html>

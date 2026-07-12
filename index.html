@@ -1,253 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>document.documentElement.classList.add('js');</script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Shoot — Corporate headshots for your whole team, in a day</title>
-<meta name="description" content="Shoot sends a photographer and full studio setup to your office and photographs your entire team in a single day. Consistent, professional headshots, delivered fast." />
+<title>Perfect Profiles — Corporate headshots for your whole team, in a day</title>
+<meta name="description" content="Perfect Profiles sends a photographer and full studio setup to your office and photographs your entire team in a single day. Consistent, professional headshots, delivered fast." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340..400;1,9..144,340..400&family=Albert+Sans:wght@400;500&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-<link rel="stylesheet" href="assets/css/base.css">
-<style>
-  .hero-pin { height: 180vh; position: relative; }
-  .hero-stage {
-    position: sticky; top: 0; height: 100dvh;
-    display: flex; align-items: center; justify-content: center;
-    overflow: hidden; padding: 0 24px;
-  }
-  .hero-inner {
-    display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 56px;
-    max-width: 1280px; width: 100%; margin: 0 auto; will-change: transform, opacity;
-  }
-  .hero-left { text-align: left; }
-  .hero h1 {
-    font-size: clamp(38px, 5.5vw, 80px); line-height: 0.98; letter-spacing: -0.03em;
-    max-width: 14ch;
-  }
-  .hero h1 em { font-style: italic; color: var(--accent); }
-  .hero .lede { margin: 24px 0 0; text-align: left; font-size: 18px; max-width: 46ch; }
-  .hero-ctas { display: flex; align-items: center; gap: 28px; margin-top: 36px; flex-wrap: wrap; justify-content: flex-start; }
-  .scroll-cue {
-    position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
-    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
-  }
-
-  .hero-right { position: relative; height: 480px; }
-  .hero-card { position: absolute; border-radius: 14px; overflow: hidden; box-shadow: 0 24px 60px -20px rgba(10,10,10,0.35); }
-  .hero-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .hero-card.a { width: 62%; aspect-ratio: 3/4; top: 0; right: 8%; z-index: 2; }
-  .hero-card.b { width: 44%; aspect-ratio: 3/4; bottom: 0; left: 0; z-index: 3; }
-
-  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-  .step { padding: 32px; border: 1px solid var(--line); border-radius: 14px; }
-  .step .num { font-family: var(--serif); font-size: 36px; color: var(--accent); margin-bottom: 18px; }
-  .step h3 { margin-bottom: 10px; }
-  .step p { font-size: 15.5px; }
-
-  .stats { background: var(--ink); color: var(--paper); }
-  .stats .wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; text-align: center; }
-  .stats h3 { font-size: clamp(36px, 5vw, 56px); color: var(--paper); margin-bottom: 10px; }
-  .stats p { color: rgba(255,255,255,0.65); font-size: 15px; }
-
-  .portfolio-teaser .grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
-  }
-  .portfolio-teaser .grid a { border-radius: 10px; overflow: hidden; aspect-ratio: 4/5; display: block; position: relative; }
-  .portfolio-teaser .grid img { width: 100%; height: 100%; object-fit: cover; transition: transform 500ms var(--ease); }
-  .portfolio-teaser .grid a:hover img { transform: scale(1.04); }
-
-  .differentiator { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
-  .differentiator img { border-radius: 14px; aspect-ratio: 4/5; object-fit: cover; width: 100%; }
-
-  .cta-band { text-align: center; background: var(--paper-soft); border-radius: 24px; padding: clamp(48px, 8vw, 96px) clamp(20px, 4vw, 40px); }
-  .cta-band h2 { max-width: 20ch; margin: 0 auto 28px; }
-
-  @media (max-width: 860px) {
-    .steps, .stats .wrap, .portfolio-teaser .grid { grid-template-columns: 1fr 1fr; }
-    .differentiator { grid-template-columns: 1fr; }
-    /* stacked images make hero content taller than one screen, so the
-       pinned/sticky scroll-fade treatment no longer fits — fall back to
-       a normal top-aligned block that clears the fixed nav. */
-    .hero-pin { height: auto; }
-    .hero-stage {
-      position: static; height: auto; min-height: 100dvh; overflow: visible;
-      align-items: flex-start; padding: calc(var(--nav-h) + 40px) 24px 48px;
-    }
-    .hero-inner { grid-template-columns: 1fr; text-align: center; }
-    .hero-left { text-align: center; }
-    .hero .lede { margin: 24px auto 0; text-align: center; }
-    .hero-ctas { justify-content: center; }
-    .hero-right { height: 360px; margin-top: 8px; }
-    .scroll-cue { display: none; }
-  }
-  @media (max-width: 560px) {
-    .steps, .stats .wrap { grid-template-columns: 1fr; }
-    .portfolio-teaser .grid { gap: 10px; }
-  }
-</style>
+<link rel="stylesheet" href="assets/css/lx.css">
 </head>
-<body>
+<body class="lx">
 
-<div class="grain"></div>
-<div class="progress"></div>
-
-<div class="curtain">
-  <span class="wordmark">Shoot</span>
-</div>
-
-<header class="bar is-hidden-init">
-  <a href="index.html" class="logo">Shoot</a>
-  <button class="menu-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-  <nav class="links">
-    <a href="index.html" class="active">Home</a>
-    <a href="services.html">Services</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="pricing.html">Pricing</a>
-    <a href="about.html">About</a>
-    <a href="contact.html" class="cta-link">Get a quote</a>
-  </nav>
+<header class="lx-nav">
+  <div class="lx-container lx-nav-inner">
+    <a href="index.html" class="lx-wordmark" aria-current="page">Perfect Profiles</a>
+    <nav class="lx-nav-links" aria-label="Main">
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="about.html">About</a>
+    </nav>
+    <a href="contact.html" class="lx-nav-cta">Request a quote</a>
+  </div>
 </header>
 
 <main>
-  <section class="hero hero-pin">
-    <div class="hero-stage">
-      <div class="hero-inner">
-        <div class="hero-left">
-          <h1>
-            <span class="mask"><span class="line">Professional headshots</span></span>
-            <span class="mask"><span class="line">Made easy</span></span>
-          </h1>
-          <p class="lede curtain-reveal">One photographer, one studio setup, your office. Every employee gets a consistent, professional headshot without leaving the building.</p>
-          <div class="hero-ctas curtain-reveal">
-            <a href="contact.html" class="btn">Get a quote</a>
-            <a href="portfolio.html" class="link-quiet">See the work</a>
+  <!-- ---------- hero: the unveiling ---------- -->
+  <section class="lx-hero">
+    <div class="lx-container lx-hero-grid">
+      <div>
+        <p class="lx-kicker">On-site corporate headshots — your office, one day</p>
+        <h1 class="lx-h1" aria-label="Every face. One standard.">
+          <span class="lx-line"><span style="--lx-d: 120ms">Every face.</span></span>
+          <span class="lx-line"><span style="--lx-d: 260ms"><em>One standard.</em></span></span>
+        </h1>
+        <p class="lx-hero-sub">
+          One photographer, one studio, your office. Every employee is
+          photographed in sixty seconds, and the directory finally looks like
+          one company.
+        </p>
+        <div class="lx-hero-actions">
+          <a href="contact.html" class="lx-button">Request a quote</a>
+          <a href="portfolio.html" class="lx-link-quiet">View the work</a>
+        </div>
+      </div>
+      <!-- The signature moment: one curtain, once, on the hero plate. -->
+      <figure class="lx-hero-plate">
+        <div class="lx-unveil">
+          <div class="lx-plate-img">
+            <img src="https://i.pravatar.cc/700?img=23" alt="A finished Perfect Profiles headshot" fetchpriority="high">
           </div>
+          <div class="lx-curtain" aria-hidden="true"></div>
         </div>
-        <div class="hero-right">
-          <div class="hero-card a"><img class="bw-img" src="https://i.pravatar.cc/800?img=23" alt="Headshot sample"></div>
-          <div class="hero-card b"><img class="bw-img" src="https://i.pravatar.cc/640?img=24" alt="Headshot sample"></div>
-        </div>
-      </div>
-      <span class="scroll-cue">Scroll</span>
+        <figcaption class="lx-plate-caption">
+          <span>The standard headshot</span>
+          <span class="lx-plate-price">sixty seconds</span>
+        </figcaption>
+      </figure>
     </div>
   </section>
 
-  <section class="section">
-    <div class="wrap">
-      <div class="section-head fade-up">
-        <span class="eyebrow">How it works</span>
-        <h2>No studio booking. No day out of office. Just a camera in the break room.</h2>
+  <!-- ---------- the work ---------- -->
+  <section class="lx-section" id="work">
+    <div class="lx-container">
+      <div class="lx-section-head">
+        <p class="lx-kicker">The work</p>
+        <h2 class="lx-h2">A consistent look, however big the team.</h2>
       </div>
-      <div class="steps fade-up-stagger">
-        <div class="step">
-          <div class="num">01</div>
-          <h3>We come to you</h3>
-          <p>Our photographer brings a full studio setup — lighting, backdrop, reflector — straight to your office. No commute, no studio booking.</p>
+      <div class="lx-plates">
+        <article class="lx-plate">
+          <div class="lx-plate-img lx-plate-img-small">
+            <img src="https://i.pravatar.cc/650?img=59" alt="Headshot from a financial services engagement" loading="lazy">
+          </div>
+          <div class="lx-plate-meta">
+            <h3 class="lx-plate-name">Financial services <span class="lx-plate-price">№ I</span></h3>
+            <p class="lx-plate-material">340 employees · 3 offices</p>
+            <p class="lx-plate-detail">Delivered within 48 hours</p>
+          </div>
+        </article>
+        <article class="lx-plate">
+          <div class="lx-plate-img lx-plate-img-small">
+            <img src="https://i.pravatar.cc/650?img=32" alt="Headshot from a healthcare engagement" loading="lazy">
+          </div>
+          <div class="lx-plate-meta">
+            <h3 class="lx-plate-name">Healthcare <span class="lx-plate-price">№ II</span></h3>
+            <p class="lx-plate-material">610 employees · 6 offices</p>
+            <p class="lx-plate-detail">Delivered within 48 hours</p>
+          </div>
+        </article>
+        <article class="lx-plate">
+          <div class="lx-plate-img lx-plate-img-small">
+            <img src="https://i.pravatar.cc/650?img=45" alt="Headshot from a technology engagement" loading="lazy">
+          </div>
+          <div class="lx-plate-meta">
+            <h3 class="lx-plate-name">SaaS / technology <span class="lx-plate-price">№ III</span></h3>
+            <p class="lx-plate-material">120 employees · 1 office</p>
+            <p class="lx-plate-detail">Delivered within 48 hours</p>
+          </div>
+        </article>
+      </div>
+      <p class="lx-plates-note">
+        Client names are kept private — the consistency is the point.
+        <a href="portfolio.html" class="lx-link-quiet">The full portfolio</a> shows
+        twelve recent engagements.
+      </p>
+    </div>
+  </section>
+
+  <!-- ---------- the standard (dark interlude) ---------- -->
+  <section class="lx-dark" id="standard">
+    <div class="lx-container">
+      <div class="lx-section-head">
+        <p class="lx-kicker lx-kicker-dark">The standard</p>
+        <h2 class="lx-h2 lx-h2-dark">The same photograph, <em>every time.</em></h2>
+      </div>
+      <dl class="lx-provenance">
+        <div class="lx-prov-row">
+          <dt>Light</dt>
+          <dd>The same key light, backdrop, and reflector at every office — your HQ or a satellite three timezones away.</dd>
         </div>
-        <div class="step">
-          <div class="num">02</div>
-          <h3>Every employee, same day</h3>
-          <p>Sixty-second sessions, back to back. A 200-person office wraps in a single day, with time slots your team books themselves.</p>
+        <div class="lx-prov-row">
+          <dt>Pace</dt>
+          <dd>Sixty seconds per person, back to back. Our largest single day: five hundred headshots.</dd>
         </div>
-        <div class="step">
-          <div class="num">03</div>
-          <h3>Fast, consistent delivery</h3>
-          <p>Every photo gets the same retouching and color treatment, delivered within 48 hours and sized for LinkedIn, Slack, and your directory.</p>
+        <div class="lx-prov-row">
+          <dt>Retouch</dt>
+          <dd>One color grade, one crop, one light retouch pass — then a human review before anything ships.</dd>
         </div>
-      </div>
+        <div class="lx-prov-row">
+          <dt>Delivery</dt>
+          <dd>Retouched files within 48 hours of the last shutter click, sized for LinkedIn, Slack, and your directory.</dd>
+        </div>
+      </dl>
     </div>
   </section>
 
-  <section class="stats section">
-    <div class="wrap">
-      <div class="fade-up">
-        <h3>500+</h3>
-        <p>headshots shot in a single day, at our largest engagement</p>
+  <!-- ---------- how it works ---------- -->
+  <section class="lx-section" id="how">
+    <div class="lx-container">
+      <div class="lx-section-head">
+        <p class="lx-kicker">How it works</p>
+        <h2 class="lx-h2">No studio booking. No day out of office.</h2>
       </div>
-      <div class="fade-up">
-        <h3>48 hrs</h3>
-        <p>from last shutter click to finished, retouched files</p>
-      </div>
-      <div class="fade-up">
-        <h3>0</h3>
-        <p>days of office disruption — we work around your team's schedule</p>
-      </div>
+      <ol class="lx-steps">
+        <li>
+          <span class="lx-step-no">01</span>
+          <h3 class="lx-step-title">The booking</h3>
+          <p class="lx-step-copy">We confirm headcount, locations, and dates, then send a self-serve link so employees pick their own sixty-second slot.</p>
+        </li>
+        <li>
+          <span class="lx-step-no">02</span>
+          <h3 class="lx-step-title">The shoot day</h3>
+          <p class="lx-step-copy">A full studio rig in your meeting room, ready within thirty minutes. Your team shows up one at a time and is back at their desk in under a minute.</p>
+        </li>
+        <li>
+          <span class="lx-step-no">03</span>
+          <h3 class="lx-step-title">The delivery</h3>
+          <p class="lx-step-copy">Every best frame gets the same grade and retouch, then lands within 48 hours — one full-resolution master per person included.</p>
+        </li>
+      </ol>
     </div>
   </section>
 
-  <section class="section portfolio-teaser">
-    <div class="wrap">
-      <div class="section-head fade-up">
-        <span class="eyebrow">Recent work</span>
-        <h2>A consistent look, however big the team.</h2>
-      </div>
-      <div class="grid fade-up-stagger">
-        <a href="portfolio.html"><img class="bw-img" src="https://i.pravatar.cc/800?img=1" alt="Headshot sample 1" loading="lazy"></a>
-        <a href="portfolio.html"><img class="bw-img" src="https://i.pravatar.cc/800?img=2" alt="Headshot sample 2" loading="lazy"></a>
-        <a href="portfolio.html"><img class="bw-img" src="https://i.pravatar.cc/800?img=3" alt="Headshot sample 3" loading="lazy"></a>
-        <a href="portfolio.html"><img class="bw-img" src="https://i.pravatar.cc/800?img=4" alt="Headshot sample 4" loading="lazy"></a>
-        <a href="portfolio.html"><img class="bw-img" src="https://i.pravatar.cc/800?img=5" alt="Headshot sample 5" loading="lazy"></a>
-        <a href="portfolio.html"><img class="bw-img" src="https://i.pravatar.cc/800?img=6" alt="Headshot sample 6" loading="lazy"></a>
-      </div>
+  <!-- ---------- the single word ---------- -->
+  <section class="lx-quote-band">
+    <div class="lx-container">
+      <blockquote class="lx-quote">
+        “Two hundred people, one Tuesday, and the directory finally looks like
+        <em> one company.</em>”
+      </blockquote>
+      <p class="lx-quote-source">— Head of People, 210-person engagement</p>
     </div>
   </section>
 
-  <section class="section">
-    <div class="wrap differentiator">
-      <img class="bw-img fade-up" src="https://i.pravatar.cc/700?img=20" alt="Studio lighting setup in an office">
-      <div class="fade-up">
-        <span class="eyebrow">Why it works</span>
-        <h2>One look, every office.</h2>
-        <p class="lede" style="margin-top:20px;">Same lighting rig, same backdrop, same retouching pass — whether we're shooting your HQ or a 40-person satellite office three timezones away. Your directory looks like one company, not a patchwork of whoever happened to have a decent webcam.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <div class="cta-band fade-up">
-        <h2>Ready to put your whole team in front of the camera?</h2>
-        <a href="contact.html" class="btn btn-dark">Get a quote</a>
+  <!-- ---------- closing CTA ---------- -->
+  <section class="lx-cta">
+    <div class="lx-container lx-cta-inner">
+      <h2 class="lx-h2">Put your whole team in front of the camera.</h2>
+      <div class="lx-hero-actions" style="margin-top: 0">
+        <a href="contact.html" class="lx-button">Request a quote</a>
+        <a href="services.html" class="lx-link-quiet">Or read how a shoot day works</a>
       </div>
     </div>
   </section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <div class="foot-top">
-      <div class="foot-brand">
-        <a href="index.html" class="logo">Shoot</a>
-        <p>On-site corporate headshot photography for teams of any size, anywhere your offices are.</p>
-      </div>
-      <div class="foot-links">
-        <div>
-          <h4>Company</h4>
-          <ul>
-            <li><a href="about.html">About</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Service</h4>
-          <ul>
-            <li><a href="services.html">How it works</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="foot-bottom">
-      <span>© 2026 Shoot. All rights reserved.</span>
-      <span>Made for teams who'd rather not do this in a hallway.</span>
-    </div>
+<!-- ---------- footer ---------- -->
+<footer class="lx-footer">
+  <div class="lx-container lx-footer-inner">
+    <a href="index.html" class="lx-wordmark">Perfect Profiles</a>
+    <nav class="lx-footer-links" aria-label="Footer">
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <span class="lx-footer-note">On site, anywhere your offices are — © 2026 Perfect Profiles</span>
   </div>
 </footer>
 
-<script src="assets/js/main.js"></script>
 </body>
 </html>
