@@ -1,0 +1,11 @@
+# Local tooling and internal docs — never deploy.
+# NOTE: denylist — new private folders added to the repo must be listed here.
+.claude
+.playwright-mcp
+.superpowers
+docs
+.gitignore
+*.md
+*.log
+*.jpeg
+*.png
