@@ -15,14 +15,14 @@
 
 <header class="lx-nav">
   <div class="lx-container lx-nav-inner">
-    <a href="index.html" class="lx-wordmark">Perfect Profiles</a>
+    <a href="/" class="lx-wordmark">Perfect Profiles</a>
     <nav class="lx-nav-links" aria-label="Main">
-      <a href="services.html">Services</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="about.html">About</a>
+      <a href="/services">Services</a>
+      <a href="/portfolio">Portfolio</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/about">About</a>
     </nav>
-    <a href="contact.html" class="lx-nav-cta" aria-current="page">Request a quote</a>
+    <a href="/contact" class="lx-nav-cta" aria-current="page">Request a quote</a>
   </div>
 </header>
 
@@ -77,24 +77,25 @@
           <label for="message">Anything else we should know?</label>
           <textarea id="message" name="message" placeholder="Office locations, deadline, special requests…"></textarea>
         </div>
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px" />
         <button type="submit" class="lx-button">Request a quote</button>
         <p class="lx-form-status" hidden role="status"></p>
       </form>
 
       <aside class="lx-direct">
-        <h2>Prefer email or a call?</h2>
+        <h2>What happens next?</h2>
         <dl>
-          <div>
-            <dt>Email</dt>
-            <dd><a href="mailto:hello@perfectprofiles.example">hello@perfectprofiles.example</a></dd>
-          </div>
-          <div>
-            <dt>Phone</dt>
-            <dd><a href="tel:+15550101234">+1 (555) 010-1234</a></dd>
-          </div>
           <div>
             <dt>Response time</dt>
             <dd>Within one business day</dd>
+          </div>
+          <div>
+            <dt>You'll receive</dt>
+            <dd>A quote and available shoot dates</dd>
+          </div>
+          <div>
+            <dt>Then</dt>
+            <dd>Employees pick their own sixty-second slot</dd>
           </div>
         </dl>
       </aside>
@@ -104,27 +105,61 @@
 
 <footer class="lx-footer">
   <div class="lx-container lx-footer-inner">
-    <a href="index.html" class="lx-wordmark">Perfect Profiles</a>
+    <a href="/" class="lx-wordmark">Perfect Profiles</a>
     <nav class="lx-footer-links" aria-label="Footer">
-      <a href="services.html">Services</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+      <a href="/services">Services</a>
+      <a href="/portfolio">Portfolio</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
     </nav>
     <span class="lx-footer-note">On site, anywhere your offices are — © 2026 Perfect Profiles</span>
   </div>
 </footer>
 
 <script>
+  // Delivery via FormSubmit.co — set FORM_EMAIL to the business inbox to go live.
+  // First real submission triggers a one-time activation email from FormSubmit.
+  const FORM_EMAIL = '';
+
   const form = document.getElementById('quote-form');
   const status = form.querySelector('.lx-form-status');
-  form.addEventListener('submit', (e) => {
+  const button = form.querySelector('button[type="submit"]');
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    status.hidden = false;
-    status.textContent =
-      'Thank you — we have your details and will reply within one business day.';
-    form.reset();
+
+    if (!FORM_EMAIL) {
+      status.hidden = false;
+      status.textContent =
+        'Our quote form isn’t accepting submissions just yet — please check back soon.';
+      return;
+    }
+
+    button.disabled = true;
+    button.textContent = 'Sending…';
+    const data = new FormData(form);
+    data.append('_subject', 'Quote request — ' + (data.get('company') || 'Perfect Profiles site'));
+
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/' + FORM_EMAIL, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: data,
+      });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      status.hidden = false;
+      status.textContent =
+        'Thank you — we have your details and will reply within one business day.';
+      form.reset();
+    } catch (err) {
+      status.hidden = false;
+      status.textContent =
+        'Something went wrong sending your request — please try again in a moment.';
+    } finally {
+      button.disabled = false;
+      button.textContent = 'Request a quote';
+    }
   });
 </script>
 
