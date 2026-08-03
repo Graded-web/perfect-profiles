@@ -9,3 +9,5 @@ docs
 *.log
 *.jpeg
 *.png
+build.sh
+_headers
