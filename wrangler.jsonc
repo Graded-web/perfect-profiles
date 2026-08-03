@@ -1,0 +1,9 @@
+{
+  // Cloudflare Workers config: serve the built dist/ folder as static assets.
+  "name": "perfect-profiles",
+  "compatibility_date": "2026-08-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  }
+}
