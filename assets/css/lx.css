@@ -1,7 +1,9 @@
 /* Perfect Profiles — Quiet Luxe system
    Adapted from venture-factory quiet-luxe template (design contract:
    ~/venture-factory/app/templates/quiet-luxe/DESIGN.md).
-   One serif, one sans, one accent. When in doubt, change less. */
+   Type modernised 2026-08: Schibsted Grotesk display + Petrona italic
+   reserved for the oxblood accent voice; label voice is sentence case.
+   One sans, one accent serif, one accent color. When in doubt, change less. */
 
 *,
 *::before,
@@ -43,7 +45,8 @@ body.lx {
   --lx-muted: #7a756a;
   --lx-plate: #fbf9f4;
 
-  --lx-display: 'Fraunces', Georgia, serif;
+  --lx-display: 'Schibsted Grotesk', 'Helvetica Neue', sans-serif;
+  --lx-serif: 'Petrona', Georgia, serif;
   --lx-body: 'Albert Sans', 'Helvetica Neue', sans-serif;
 
   background: var(--lx-ivory);
@@ -75,10 +78,9 @@ body.lx {
 
 .lx-kicker {
   font-family: var(--lx-body);
-  font-size: 0.6875rem;
+  font-size: 0.9375rem;
   font-weight: 500;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
+  letter-spacing: 0.01em;
   color: var(--lx-oxblood);
   margin: 0 0 20px;
 }
@@ -88,35 +90,34 @@ body.lx {
 
 .lx-h1 {
   font-family: var(--lx-display);
-  font-weight: 340;
+  font-weight: 500;
   font-size: clamp(2.9rem, 6.2vw, 5.25rem);
   line-height: 1.04;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.025em;
   margin: 0;
 }
 .lx-h1-page {
   font-size: clamp(2.4rem, 5vw, 3.8rem);
 }
-.lx-h1 em,
-.lx-h2 em {
+.lx-h1 em {
+  font-family: var(--lx-serif);
   font-style: italic;
+  font-weight: 430;
   color: var(--lx-oxblood);
 }
+/* The italic serif accent lives on the homepage hero only */
 
 .lx-h2 {
   font-family: var(--lx-display);
-  font-weight: 340;
+  font-weight: 500;
   font-size: clamp(1.9rem, 3.4vw, 2.9rem);
   line-height: 1.12;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   margin: 0;
   max-width: 22ch;
 }
 .lx-h2-dark {
   color: var(--lx-ivory);
-}
-.lx-h2-dark em {
-  color: #c9a29a;
 }
 
 /* hero line-rise: each line in a clipped slot, rises once on load */
@@ -159,9 +160,9 @@ body.lx {
 }
 .lx-wordmark {
   font-family: var(--lx-display);
-  font-weight: 400;
+  font-weight: 600;
   font-size: 1.35rem;
-  letter-spacing: 0.04em;
+  letter-spacing: -0.01em;
   color: var(--lx-ink);
 }
 .lx-nav-links {
@@ -169,10 +170,9 @@ body.lx {
   gap: 36px;
 }
 .lx-nav-links a {
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  letter-spacing: 0;
   color: var(--lx-muted);
   transition: color 200ms ease;
   white-space: nowrap;
@@ -190,10 +190,9 @@ body.lx {
   }
 }
 .lx-nav-cta {
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  letter-spacing: 0;
   color: var(--lx-ink);
   border-bottom: 1px solid var(--lx-ink);
   padding-bottom: 2px;
@@ -255,10 +254,9 @@ body.lx {
 
 .lx-button {
   display: inline-block;
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0.01em;
   color: var(--lx-ivory);
   background: var(--lx-ink);
   padding: 16px 32px;
@@ -343,7 +341,7 @@ body.lx {
   font-size: 0.9375rem;
 }
 .lx-plate-price {
-  font-family: var(--lx-display);
+  font-family: var(--lx-serif);
   font-style: italic;
   color: var(--lx-oxblood);
   white-space: nowrap;
@@ -386,7 +384,7 @@ body.lx {
 }
 .lx-plate-name {
   font-family: var(--lx-display);
-  font-weight: 400;
+  font-weight: 500;
   font-size: 1.25rem;
   margin: 0 0 8px;
   display: flex;
@@ -444,17 +442,16 @@ body.lx {
   }
 }
 .lx-prov-row dt {
-  font-size: 0.6875rem;
+  font-size: 0.875rem;
   font-weight: 500;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
+  letter-spacing: 0.01em;
   color: #c9a29a;
   padding-top: 4px;
 }
 .lx-prov-row dd {
   margin: 0;
   font-family: var(--lx-display);
-  font-weight: 340;
+  font-weight: 450;
   font-size: 1.3rem;
   line-height: 1.45;
   color: var(--lx-ivory);
@@ -474,14 +471,14 @@ body.lx {
   }
 }
 .lx-step-no {
-  font-family: var(--lx-display);
+  font-family: var(--lx-serif);
   font-style: italic;
   font-size: 1rem;
   color: var(--lx-oxblood);
 }
 .lx-step-title {
   font-family: var(--lx-display);
-  font-weight: 400;
+  font-weight: 500;
   font-size: 1.4rem;
   margin: 14px 0 12px;
 }
@@ -514,7 +511,7 @@ body.lx {
 }
 .lx-step-row h3 {
   font-family: var(--lx-display);
-  font-weight: 400;
+  font-weight: 500;
   font-size: 1.4rem;
 }
 
@@ -540,7 +537,7 @@ body.lx {
 }
 .lx-included li::before {
   content: '—';
-  font-family: var(--lx-display);
+  font-family: var(--lx-serif);
   font-style: italic;
   color: var(--lx-oxblood);
   flex: none;
@@ -560,21 +557,23 @@ body.lx {
 }
 .lx-quote {
   font-family: var(--lx-display);
-  font-weight: 340;
+  font-weight: 450;
   font-size: clamp(1.6rem, 3vw, 2.4rem);
   line-height: 1.35;
+  letter-spacing: -0.015em;
   max-width: 30ch;
   margin: 0 auto;
 }
 .lx-quote em {
+  font-family: var(--lx-serif);
   font-style: italic;
+  font-weight: 430;
   color: var(--lx-oxblood);
 }
 .lx-quote-source {
   margin: 28px 0 0;
-  font-size: 0.8125rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 0.01em;
   color: var(--lx-muted);
 }
 
@@ -598,7 +597,7 @@ body.lx {
   gap: 24px;
   padding-block: 24px;
   font-family: var(--lx-display);
-  font-weight: 400;
+  font-weight: 500;
   font-size: 1.2rem;
 }
 .lx-faq summary::-webkit-details-marker {
@@ -607,7 +606,6 @@ body.lx {
 .lx-faq summary::after {
   content: '+';
   font-family: var(--lx-display);
-  font-style: italic;
   color: var(--lx-oxblood);
   transition: transform 200ms ease;
 }
@@ -647,10 +645,9 @@ body.lx {
 }
 .lx-field label {
   display: block;
-  font-size: 0.6875rem;
+  font-size: 0.875rem;
   font-weight: 500;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
+  letter-spacing: 0.01em;
   color: var(--lx-muted);
   margin-bottom: 10px;
 }
@@ -682,7 +679,7 @@ body.lx {
   border: 1px solid var(--lx-oxblood);
   border-radius: 2px;
   font-family: var(--lx-display);
-  font-weight: 340;
+  font-weight: 450;
   font-size: 1.1rem;
   color: var(--lx-oxblood);
 }
@@ -698,7 +695,7 @@ body.lx {
 }
 .lx-direct h2 {
   font-family: var(--lx-display);
-  font-weight: 400;
+  font-weight: 500;
   font-size: 1.4rem;
 }
 .lx-direct dl {
@@ -707,17 +704,16 @@ body.lx {
   gap: 22px;
 }
 .lx-direct dt {
-  font-size: 0.6875rem;
+  font-size: 0.875rem;
   font-weight: 500;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
+  letter-spacing: 0.01em;
   color: var(--lx-muted);
   margin-bottom: 4px;
 }
 .lx-direct dd {
   margin: 0;
   font-family: var(--lx-display);
-  font-weight: 340;
+  font-weight: 450;
   font-size: 1.15rem;
 }
 .lx-direct dd a {
