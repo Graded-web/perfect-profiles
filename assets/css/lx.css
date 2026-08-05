@@ -327,7 +327,6 @@ body.lx {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(1);
 }
 .lx-plate-img-small {
   aspect-ratio: 1 / 1;
@@ -792,5 +791,57 @@ body.lx {
   }
   .lx-curtain {
     display: none;
+  }
+}
+
+/* ---------- portfolio range strips ---------- */
+
+.lx-plate[data-more] {
+  cursor: pointer;
+}
+.lx-plate[data-more]:hover .lx-plate-name,
+.lx-plate[data-more]:focus-visible .lx-plate-name {
+  color: var(--lx-oxblood);
+}
+.lx-plate[data-more]:focus-visible {
+  outline: 2px solid var(--lx-oxblood);
+  outline-offset: 2px;
+}
+.lx-plate-count {
+  font-family: var(--lx-serif);
+  font-style: italic;
+  font-weight: 430;
+  font-size: 1rem;
+  color: var(--lx-oxblood);
+  white-space: nowrap;
+}
+.lx-plate-more {
+  grid-column: 1 / -1;
+  display: none;
+}
+.lx-plate-more > div {
+  overflow: hidden;
+}
+.lx-plate-more.lx-anim {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.lx-plate-more.lx-anim.open {
+  grid-template-rows: 1fr;
+}
+.lx-more-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 280px));
+  justify-content: start;
+  gap: 20px;
+  padding: 4px 0 12px;
+}
+.lx-more-grid .lx-plate-img {
+  aspect-ratio: 1 / 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lx-plate-more.lx-anim {
+    transition: none;
   }
 }
