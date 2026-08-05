@@ -845,3 +845,20 @@ body.lx {
     transition: none;
   }
 }
+
+/* ---------- hero slideshow ---------- */
+
+.lx-hero-slides img {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 900ms ease;
+}
+.lx-hero-slides img.is-active {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lx-hero-slides img {
+    transition: none;
+  }
+}
