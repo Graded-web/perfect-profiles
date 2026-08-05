@@ -22,5 +22,5 @@
     if (counter) counter.textContent = (i + 1) + ' / ' + slides.length;
   }
   load(slides[1]);
-  setInterval(tick, 4200);
+  setInterval(tick, 3200);
 })();
