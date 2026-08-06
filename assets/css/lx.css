@@ -862,3 +862,49 @@ body.lx {
     transition: none;
   }
 }
+
+/* ---------- client logo band ---------- */
+
+.lx-logo-band {
+  border-top: 1px solid var(--lx-line);
+  border-bottom: 1px solid var(--lx-line);
+  padding: 1.5rem 0;
+  overflow: hidden;
+}
+.lx-logo-track {
+  display: flex;
+  width: max-content;
+  animation: lx-logo-scroll 90s linear infinite;
+}
+.lx-logo-band:hover .lx-logo-track {
+  animation-play-state: paused;
+}
+.lx-logo-set {
+  display: flex;
+  align-items: center;
+  gap: 3.75rem;
+  padding-right: 3.75rem;
+}
+.lx-logo-set img {
+  height: 24px;
+  width: auto;
+  filter: grayscale(1);
+  opacity: 0.55;
+  mix-blend-mode: multiply;
+}
+.lx-logo-set img.lx-logo-tall {
+  height: 38px;
+}
+.lx-logo-set img.lx-logo-wide {
+  height: 15px;
+}
+@keyframes lx-logo-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lx-logo-track {
+    animation: none;
+  }
+}
