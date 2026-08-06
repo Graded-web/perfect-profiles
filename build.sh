@@ -4,5 +4,5 @@
 set -euo pipefail
 rm -rf dist
 mkdir dist
-cp *.html _headers _redirects robots.txt sitemap.xml dist/
+cp *.html _headers robots.txt sitemap.xml dist/
 cp -R assets dist/
