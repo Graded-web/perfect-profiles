@@ -342,6 +342,10 @@ body.lx {
   margin-top: 14px;
   font-size: 0.9375rem;
 }
+/* Hero caption fades with the slide swap */
+.lx-hero-plate .lx-plate-caption {
+  transition: opacity 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
 .lx-plate-price {
   font-family: var(--lx-serif);
   font-style: italic;
@@ -632,10 +636,27 @@ body.lx {
 .lx-faq details[open] summary::after {
   transform: rotate(45deg);
 }
-.lx-faq details > p {
+.lx-faq details p {
   padding-bottom: 24px;
   color: var(--lx-muted);
   max-width: 58ch;
+}
+/* JS wraps answers so they unfold like the portfolio range strips */
+.lx-faq-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.lx-faq-body.open {
+  grid-template-rows: 1fr;
+}
+.lx-faq-body > div {
+  overflow: hidden;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lx-faq-body {
+    transition: none;
+  }
 }
 
 /* ---------- contact ---------- */
@@ -662,6 +683,28 @@ body.lx {
 }
 .lx-field {
   margin-bottom: 32px;
+  position: relative;
+}
+/* Focus underline draws in from the left over the resting hairline */
+.lx-field::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--lx-oxblood);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.lx-field:focus-within::after {
+  transform: scaleX(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .lx-field::after {
+    transition: none;
+  }
 }
 .lx-field label {
   display: block;
@@ -687,7 +730,6 @@ body.lx {
 .lx-field select:focus,
 .lx-field textarea:focus {
   outline: none;
-  border-bottom-color: var(--lx-oxblood);
 }
 .lx-field textarea {
   resize: vertical;
@@ -897,6 +939,11 @@ body.lx {
   border-bottom: 1px solid var(--lx-line);
   padding: 1.5rem 0;
   overflow: hidden;
+}
+.lx-logo-mask {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 64px, #000 calc(100% - 64px), transparent);
+  mask-image: linear-gradient(to right, transparent, #000 64px, #000 calc(100% - 64px), transparent);
 }
 .lx-logo-track {
   display: flex;

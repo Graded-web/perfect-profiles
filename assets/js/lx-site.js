@@ -28,6 +28,38 @@
   }
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // FAQ answers unfold like the portfolio range strips (native toggle without JS)
+  Array.prototype.forEach.call(document.querySelectorAll('.lx-faq details'), function (details) {
+    var summary = details.querySelector('summary');
+    if (!summary) return;
+    var body = document.createElement('div');
+    body.className = 'lx-faq-body';
+    var inner = document.createElement('div');
+    body.appendChild(inner);
+    while (summary.nextSibling) inner.appendChild(summary.nextSibling);
+    details.appendChild(body);
+    summary.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (body.classList.contains('open')) {
+        body.classList.remove('open');
+        var onEnd = function (ev) {
+          if (ev.propertyName !== 'grid-template-rows') return;
+          if (!body.classList.contains('open')) details.open = false;
+          body.removeEventListener('transitionend', onEnd);
+        };
+        body.addEventListener('transitionend', onEnd);
+      } else {
+        details.open = true;
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            body.classList.add('open');
+          });
+        });
+      }
+    });
+  });
+
   if (!('IntersectionObserver' in window)) return;
 
   var SELECTOR = [

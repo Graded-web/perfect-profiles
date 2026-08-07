@@ -19,8 +19,17 @@
     slides[i].classList.remove('is-active');
     slides[next].classList.add('is-active');
     i = next;
-    if (caption) caption.textContent = slides[i].dataset.caption || '';
-    if (counter) counter.textContent = (i + 1) + ' / ' + slides.length;
+    if (caption) {
+      var fig = caption.parentElement;
+      fig.style.opacity = '0';
+      setTimeout(function () {
+        caption.textContent = slides[i].dataset.caption || '';
+        if (counter) counter.textContent = (i + 1) + ' / ' + slides.length;
+        fig.style.opacity = '1';
+      }, 280);
+    } else if (counter) {
+      counter.textContent = (i + 1) + ' / ' + slides.length;
+    }
   }
   load(slides[1]);
   setInterval(tick, 3200);
