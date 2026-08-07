@@ -8,6 +8,7 @@
   var counter = document.getElementById('lx-hero-count');
   var i = 0;
   function load(img) {
+    if (img.dataset.srcset) { img.srcset = img.dataset.srcset; delete img.dataset.srcset; }
     if (img.dataset.src) { img.src = img.dataset.src; delete img.dataset.src; }
   }
   function tick() {
