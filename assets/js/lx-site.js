@@ -5,24 +5,25 @@
   var nav = document.querySelector('.lx-nav');
   var toggle = nav && nav.querySelector('.lx-nav-toggle');
 
-  function closeMenu() {
-    nav.classList.remove('is-open');
-    toggle.setAttribute('aria-expanded', 'false');
+  function setMenu(open) {
+    nav.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.documentElement.classList.toggle('lx-menu-open', open);
   }
 
   if (toggle) {
     toggle.addEventListener('click', function () {
-      var open = nav.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      setMenu(!nav.classList.contains('is-open'));
     });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && nav.classList.contains('is-open')) {
-        closeMenu();
+        setMenu(false);
         toggle.focus();
       }
     });
-    document.addEventListener('click', function (e) {
-      if (nav.classList.contains('is-open') && !nav.contains(e.target)) closeMenu();
+    var desktop = window.matchMedia('(min-width: 768px)');
+    desktop.addEventListener('change', function (e) {
+      if (e.matches) setMenu(false);
     });
   }
 

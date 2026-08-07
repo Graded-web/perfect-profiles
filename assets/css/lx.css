@@ -944,9 +944,18 @@ body.lx {
 .lx-menu-cta {
   display: none;
 }
+.lx-menu-open {
+  overflow: hidden;
+}
 @media (max-width: 767px) {
   .lx-nav-cta {
     display: none;
+  }
+  /* Wordmark and X ride above the full-screen panel */
+  .lx-wordmark,
+  .lx-nav-toggle {
+    position: relative;
+    z-index: 2;
   }
   .lx-nav-toggle {
     display: grid;
@@ -976,50 +985,76 @@ body.lx {
   .lx-nav.is-open .lx-nav-toggle span:last-child {
     transform: translateY(-3.5px) rotate(-45deg);
   }
+  /* Full-screen drawer: slides in from the left, slides back out.
+     The nav's backdrop-filter makes fixed children nav-relative, and the
+     nav is always stuck to the viewport top, so inset from 0 is the screen. */
   .lx-nav-links {
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    top: 0;
     left: 0;
-    right: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    z-index: 1;
     flex-direction: column;
     gap: 0;
-    padding: 0 24px 10px;
+    padding: 108px 24px 32px;
     background: var(--lx-ivory);
-    border-bottom: 1px solid var(--lx-line);
-    overflow: visible;
+    overflow: hidden auto;
+    transform: translateX(-100%);
     visibility: hidden;
-    opacity: 0;
-    transform: translateY(-8px);
     pointer-events: none;
     transition:
-      opacity 200ms cubic-bezier(0.16, 1, 0.3, 1),
-      transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
-      visibility 0s 200ms;
+      transform 350ms cubic-bezier(0.16, 1, 0.3, 1),
+      visibility 0s 350ms;
   }
   .lx-nav.is-open .lx-nav-links {
+    transform: translateX(0);
     visibility: visible;
-    opacity: 1;
-    transform: none;
     pointer-events: auto;
-    transition:
-      opacity 200ms cubic-bezier(0.16, 1, 0.3, 1),
-      transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
   }
   .lx-nav-links a {
     display: block;
-    padding-block: 14px;
+    padding-block: 18px;
     border-top: 1px solid var(--lx-line);
-    font-size: 1rem;
+    font-family: var(--lx-display);
+    font-weight: 500;
+    font-size: 1.6rem;
+    color: var(--lx-ink);
+    opacity: 0;
+    transition: opacity 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  /* Options arrive one by one once the drawer has landed */
+  .lx-nav.is-open .lx-nav-links a {
+    opacity: 1;
+    transition: opacity 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .lx-nav.is-open .lx-nav-links a:nth-child(1) {
+    transition-delay: 140ms;
+  }
+  .lx-nav.is-open .lx-nav-links a:nth-child(2) {
+    transition-delay: 210ms;
+  }
+  .lx-nav.is-open .lx-nav-links a:nth-child(3) {
+    transition-delay: 280ms;
+  }
+  .lx-nav.is-open .lx-nav-links a:nth-child(4) {
+    transition-delay: 350ms;
+  }
+  .lx-nav.is-open .lx-nav-links a:nth-child(5) {
+    transition-delay: 420ms;
   }
   .lx-menu-cta,
   .lx-nav-links .lx-menu-cta {
     display: block;
     color: var(--lx-oxblood);
-    font-weight: 500;
   }
   @media (prefers-reduced-motion: reduce) {
     .lx-nav-links,
     .lx-nav.is-open .lx-nav-links,
+    .lx-nav-links a,
+    .lx-nav.is-open .lx-nav-links a,
     .lx-nav-toggle span {
       transition: none;
     }
