@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..700&family=Petrona:ital,wght@1,400..500&family=Albert+Sans:wght@400;500&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-<link rel="stylesheet" href="assets/css/lx.css?v=20260807a">
+<link rel="stylesheet" href="assets/css/lx.css?v=20260807b">
 <link rel="canonical" href="https://perfectprofile.com.au/services">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Perfect Profiles">
@@ -25,13 +25,15 @@
 <header class="lx-nav">
   <div class="lx-container lx-nav-inner">
     <a href="/" class="lx-wordmark">Perfect Profiles</a>
-    <nav class="lx-nav-links" aria-label="Main">
+    <nav class="lx-nav-links" id="lx-menu" aria-label="Main">
       <a href="/services" aria-current="page">Services</a>
       <a href="/portfolio">Portfolio</a>
       <a href="/pricing">Pricing</a>
       <a href="/about">About</a>
+      <a href="/contact" class="lx-menu-cta">Request a quote</a>
     </nav>
     <a href="/contact" class="lx-nav-cta">Request a quote</a>
+    <button class="lx-nav-toggle" aria-expanded="false" aria-controls="lx-menu" aria-label="Menu"><span></span><span></span></button>
   </div>
 </header>
 
@@ -158,5 +160,6 @@
   </div>
 </footer>
 
+  <script src="assets/js/lx-site.js?v=1" defer></script>
 </body>
 </html>
