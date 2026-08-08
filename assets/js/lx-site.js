@@ -89,7 +89,7 @@
       e.target.classList.add('is-in');
       io.unobserve(e.target);
     });
-  }, { rootMargin: '0px 0px -60px 0px', threshold: 0.1 });
+  }, { rootMargin: '0px 0px 160px 0px', threshold: 0 });
 
   Array.prototype.forEach.call(document.querySelectorAll(SELECTOR), function (el) {
     // Anything already on screen stays static — the hero owns the load moment.
