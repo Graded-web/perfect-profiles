@@ -462,6 +462,10 @@ body.lx {
   border: none;
   border-radius: 10px;
 }
+/* Tall source photos whose faces sit near the top of frame */
+.lx-crop-top img {
+  object-position: 50% 12%;
+}
 .lx-plate-meta {
   padding-top: 20px;
 }
