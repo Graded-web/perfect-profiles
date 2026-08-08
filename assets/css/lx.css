@@ -250,6 +250,11 @@ body.lx {
   max-width: 44ch;
   color: var(--lx-muted);
 }
+/* Homepage hero carries a longer sub; let it run wider so the text
+   column doesn't outgrow the plate */
+.lx-hero .lx-hero-sub {
+  max-width: 58ch;
+}
 .lx-hero-actions {
   margin-top: 40px;
   display: flex;
