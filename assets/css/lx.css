@@ -1108,11 +1108,14 @@ body.lx {
   overflow: hidden;
 }
 @media (max-width: 767px) {
+  /* CTA stays visible next to the hamburger, compacted */
   .lx-nav-cta {
-    display: none;
+    margin-left: auto;
+    font-size: 0.875rem;
   }
-  /* Wordmark and X ride above the full-screen panel */
+  /* Wordmark, CTA and X ride above the full-screen panel */
   .lx-wordmark,
+  .lx-nav-cta,
   .lx-nav-toggle {
     position: relative;
     z-index: 2;
@@ -1205,10 +1208,9 @@ body.lx {
   .lx-nav.is-open .lx-nav-links a:nth-child(5) {
     transition-delay: 600ms;
   }
-  .lx-menu-cta,
+  /* Drawer CTA stays hidden — the header CTA is always visible on mobile */
   .lx-nav-links .lx-menu-cta {
-    display: block;
-    color: var(--lx-oxblood);
+    display: none;
   }
   @media (prefers-reduced-motion: reduce) {
     .lx-nav-links,
