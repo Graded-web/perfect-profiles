@@ -66,6 +66,7 @@
     '.lx-section-head',
     '.lx-plate',
     '.lx-plates-note',
+    '.lx-banner',
     '.lx-prov-row',
     '.lx-steps > li',
     '.lx-step-row',

@@ -429,6 +429,31 @@ body.lx {
   margin-bottom: 64px;
 }
 
+/* Wide photo banners between sections (The Process) */
+.lx-banner-band {
+  padding-block: 0 120px;
+}
+.lx-banner-band-top {
+  padding-top: 120px;
+}
+@media (max-width: 767px) {
+  .lx-banner-band {
+    padding-block: 0 72px;
+  }
+  .lx-banner-band-top {
+    padding-top: 72px;
+  }
+}
+.lx-banner {
+  border-radius: 10px;
+  overflow: hidden;
+}
+.lx-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .lx-plates {
   display: grid;
   gap: 40px;
