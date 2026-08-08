@@ -174,6 +174,14 @@ body.lx {
   height: 30px;
   width: auto;
 }
+/* Nav is mark-only: larger, with a padded hit area around the narrow mark */
+.lx-nav .lx-wordmark {
+  padding: 4px 12px;
+  margin-left: -12px;
+}
+.lx-nav .lx-wordmark img {
+  height: 44px;
+}
 .lx-nav-links {
   display: flex;
   gap: 36px;
