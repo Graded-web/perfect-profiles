@@ -121,6 +121,9 @@ body.lx {
 .lx-h2-dark {
   color: var(--lx-ivory);
 }
+#people .lx-h2 {
+  max-width: none;
+}
 
 /* hero line-rise: each line in a clipped slot, rises once on load */
 .lx-line {
