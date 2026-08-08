@@ -1,6 +1,6 @@
 // Delivery via FormSubmit.co — set FORM_EMAIL to the business inbox to go live.
 // First real submission triggers a one-time activation email from FormSubmit.
-const FORM_EMAIL = '';
+const FORM_EMAIL = 'info@perfectprofile.com.au';
 
 const form = document.getElementById('quote-form');
 const status = form.querySelector('.lx-form-status');
@@ -19,7 +19,8 @@ form.addEventListener('submit', async (e) => {
   button.disabled = true;
   button.textContent = 'Sending…';
   const data = new FormData(form);
-  data.append('_subject', 'Quote request — ' + (data.get('company') || 'Perfect Profiles site'));
+  const name = [data.get('first-name'), data.get('surname')].filter(Boolean).join(' ');
+  data.append('_subject', 'Quote request — ' + (name || 'Perfect Profiles site'));
 
   try {
     const res = await fetch('https://formsubmit.co/ajax/' + FORM_EMAIL, {

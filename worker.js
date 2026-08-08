@@ -2,6 +2,12 @@
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if (url.pathname === "/pricing" || url.pathname === "/pricing.html") {
+      url.pathname = "/contact";
+      url.protocol = "https:";
+      if (url.hostname.startsWith("www.")) url.hostname = url.hostname.slice(4);
+      return Response.redirect(url.toString(), 301);
+    }
     const needsHost = url.hostname.startsWith("www.");
     const needsScheme = url.protocol === "http:";
     if (needsHost || needsScheme) {
