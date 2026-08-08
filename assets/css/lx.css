@@ -1137,12 +1137,16 @@ body.lx {
     margin-left: auto;
     font-size: 0.875rem;
   }
-  /* Wordmark, CTA and X ride above the full-screen panel */
+  /* Wordmark, CTA and X ride above the full-screen panel.
+     translateZ(0) keeps them on their own compositing layers: iOS Safari
+     paints the transform-transitioning drawer above non-composited
+     siblings for the duration of the slide, z-index notwithstanding. */
   .lx-wordmark,
   .lx-nav-cta,
   .lx-nav-toggle {
     position: relative;
     z-index: 2;
+    transform: translateZ(0);
   }
   .lx-nav-toggle {
     display: grid;
