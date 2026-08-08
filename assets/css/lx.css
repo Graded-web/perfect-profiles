@@ -255,6 +255,14 @@ body.lx {
 .lx-hero .lx-hero-sub {
   max-width: 58ch;
 }
+.lx-hero .lx-hero-sub + .lx-hero-sub {
+  margin-top: 16px;
+}
+/* Three-line headline: ~22ch lines need a smaller display size than
+   the two-word default to hold one row each */
+.lx-hero .lx-h1 {
+  font-size: clamp(1.8rem, 3.4vw, 3.2rem);
+}
 .lx-hero-actions {
   margin-top: 40px;
   display: flex;
@@ -410,6 +418,14 @@ body.lx {
 }
 .lx-plate .lx-plate-img {
   border: none;
+}
+.lx-plates-gallery .lx-plate {
+  border: none;
+  border-radius: 14px;
+}
+.lx-plates-gallery .lx-plate-img {
+  border: none;
+  border-radius: 10px;
 }
 .lx-plate-meta {
   padding-top: 20px;
