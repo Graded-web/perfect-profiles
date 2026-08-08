@@ -20,7 +20,7 @@ form.addEventListener('submit', async (e) => {
   button.textContent = 'Sending…';
   const data = new FormData(form);
   const name = [data.get('first-name'), data.get('surname')].filter(Boolean).join(' ');
-  data.append('_subject', 'Quote request — ' + (name || 'Perfect Profiles site'));
+  data.append('_subject', 'Quote request — ' + (name || 'Perfect Profile site'));
 
   try {
     const res = await fetch('https://formsubmit.co/ajax/' + FORM_EMAIL, {

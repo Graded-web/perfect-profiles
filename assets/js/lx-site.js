@@ -1,4 +1,4 @@
-/* Perfect Profiles — sitewide: mobile menu + once-only scroll fades.
+/* Perfect Profile — sitewide: mobile menu + once-only scroll fades.
    Motion stays inside the quiet-luxe contract: transform/opacity only,
    fades 500ms sparing, menu 200ms, nothing replays, reduced motion = static. */
 (function () {
