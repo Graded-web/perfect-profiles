@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="218.535 225.303 158.205 305.171" width="17" height="32">
+<path transform="matrix(1,0,0,-1,224.1559,377.88853)" stroke-width="11.241" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="miter" fill="none" stroke="#26241f" d="M0 0V146.964H146.964V0-146.964H0V0Z"/>
+<path transform="matrix(1,0,0,-1,224.1559,524.8523)" stroke-width="11.241" stroke-linecap="butt" stroke-miterlimit="10" stroke-linejoin="miter" fill="none" stroke="#26241f" d="M0 0V293.928H73.482C114.065 293.928 146.964 261.029 146.964 220.446 146.964 179.863 114.065 146.964 73.482 146.964H0"/>
+<path transform="matrix(1,0,0,-1,265.1249,442.9143)" stroke-width="11.241" stroke-linecap="round" stroke-miterlimit="10" stroke-linejoin="miter" fill="none" stroke="#26241f" d="M0 0V130.052H32.513C50.469 130.052 65.026 115.495 65.026 97.539 65.026 79.582 50.469 65.026 32.513 65.026H0"/>
+</svg>

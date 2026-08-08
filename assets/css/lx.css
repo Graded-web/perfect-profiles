@@ -166,6 +166,13 @@ body.lx {
   font-size: 1.35rem;
   letter-spacing: -0.01em;
   color: var(--lx-ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.lx-wordmark img {
+  height: 30px;
+  width: auto;
 }
 .lx-nav-links {
   display: flex;
