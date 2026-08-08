@@ -571,6 +571,44 @@ body.lx {
   font-size: 1.4rem;
   margin: 14px 0 12px;
 }
+
+/* ---------- about: founder bios + long-form prose ---------- */
+
+.lx-bios {
+  display: grid;
+  gap: 64px;
+}
+@media (min-width: 900px) {
+  .lx-bios {
+    grid-template-columns: 1fr 1fr;
+    gap: 88px;
+  }
+}
+.lx-bio p {
+  color: var(--lx-muted);
+  margin-top: 16px;
+}
+.lx-bio-name {
+  font-family: var(--lx-display);
+  font-weight: 500;
+  font-size: 1.4rem;
+  margin: 0;
+}
+.lx-bio .lx-bio-role {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--lx-oxblood);
+  margin-top: 6px;
+}
+.lx-prose {
+  max-width: 70ch;
+}
+.lx-prose p {
+  color: var(--lx-muted);
+}
+.lx-prose p + p {
+  margin-top: 16px;
+}
 .lx-step-copy {
   margin: 0;
   font-size: 0.9375rem;
