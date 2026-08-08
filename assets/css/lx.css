@@ -1,9 +1,9 @@
 /* Perfect Profiles — Quiet Luxe system
    Adapted from venture-factory quiet-luxe template (design contract:
    ~/venture-factory/app/templates/quiet-luxe/DESIGN.md).
-   Type modernised 2026-08: Schibsted Grotesk display + Petrona italic
-   reserved for the oxblood accent voice; label voice is sentence case.
-   One sans, one accent serif, one accent color. When in doubt, change less. */
+   Type: Noto Sans across all three voices (2026-08-08, Zach's call);
+   the former accent-serif slots (--lx-serif) render as Noto Sans italic.
+   Label voice is sentence case. When in doubt, change less. */
 
 *,
 *::before,
@@ -45,9 +45,9 @@ body.lx {
   --lx-muted: #7a756a;
   --lx-plate: #fbf9f4;
 
-  --lx-display: 'Schibsted Grotesk', 'Helvetica Neue', sans-serif;
-  --lx-serif: 'Petrona', Georgia, serif;
-  --lx-body: 'Albert Sans', 'Helvetica Neue', sans-serif;
+  --lx-display: 'Noto Sans', 'Helvetica Neue', sans-serif;
+  --lx-serif: 'Noto Sans', 'Helvetica Neue', sans-serif;
+  --lx-body: 'Noto Sans', 'Helvetica Neue', sans-serif;
 
   background: var(--lx-ivory);
   color: var(--lx-ink);
