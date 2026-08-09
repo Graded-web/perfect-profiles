@@ -9,6 +9,13 @@ docs
 *.log
 *.jpeg
 *.png
+Best Perfect Profile Shots
+Perfect Profile (2)
+company logos
+dist
+.wrangler
+worker.js
+.DS_Store
 build.sh
 _headers
 wrangler.jsonc

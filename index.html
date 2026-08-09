@@ -53,7 +53,7 @@
       <a href="/contact" class="lx-menu-cta">Request a quote</a>
     </nav>
     <a href="/contact" class="lx-nav-cta">Request a quote</a>
-    <button class="lx-nav-toggle" aria-expanded="false" aria-controls="lx-menu" aria-label="Menu"><span></span><span></span></button>
+    <button type="button" class="lx-nav-toggle" aria-expanded="false" aria-controls="lx-menu" aria-label="Menu"><span></span><span></span></button>
   </div>
 </header>
 
@@ -71,6 +71,7 @@
       <figure class="lx-hero-plate">
         <div class="lx-unveil">
           <div class="lx-plate-img lx-hero-slides">
+            <!-- [html-validate-disable-block element-required-attributes: slides 2+ lazy-load via data-src in lx-hero.js] -->
             <img src="assets/img/h-bondi.jpg" srcset="assets/img/h-bondi-800.webp 800w, assets/img/h-bondi.webp 1120w" sizes="(min-width: 980px) 40vw, 92vw" alt="Headshot of a woman in a pink blazer on a white background" fetchpriority="high" class="is-active" data-caption="Bondi Sands, headshot day">
             <img data-src="assets/img/h-thattil.jpg" data-srcset="assets/img/h-thattil-800.webp 800w, assets/img/h-thattil.webp 1120w" sizes="(min-width: 980px) 40vw, 92vw" alt="Editorial portrait in a yellow jacket on a pink background" data-caption="Maria Thattil, cover shoot">
             <img data-src="assets/img/h-vrc.jpg" data-srcset="assets/img/h-vrc-800.webp 800w, assets/img/h-vrc.webp 1120w" sizes="(min-width: 980px) 40vw, 92vw" alt="Model in a red suit on a white lounge" data-caption="VRC, carnival campaign">
@@ -96,7 +97,7 @@
     </div>
   </section>
 
-  <div class="lx-logo-band" aria-label="Clients photographed for">
+  <div class="lx-logo-band" role="group" aria-label="Clients photographed for">
     <div class="lx-logo-mask">
     <div class="lx-logo-track">
       <div class="lx-logo-set">
