@@ -631,26 +631,13 @@ body.lx {
 .lx-prose {
   max-width: 70ch;
 }
-/* Founders duo shot beside the partnership story */
-.lx-duo {
-  display: grid;
-  gap: 40px;
-  align-items: start;
+/* About: founders banner between the heading and the bios */
+.lx-about-banner {
+  margin-bottom: 88px;
 }
-.lx-duo-figure {
-  max-width: 560px;
-}
-.lx-plate-img-wide {
-  aspect-ratio: 4 / 3;
-}
-@media (min-width: 900px) {
-  .lx-duo {
-    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
-    gap: 88px;
-  }
-  .lx-duo-figure {
-    order: 2;
-    max-width: none;
+@media (max-width: 767px) {
+  .lx-about-banner {
+    margin-bottom: 56px;
   }
 }
 .lx-prose p {
