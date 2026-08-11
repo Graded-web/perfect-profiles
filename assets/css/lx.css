@@ -142,6 +142,16 @@ body.lx {
     transform: translateY(0);
   }
 }
+/* landing whisper: fades in once on load, paired with a line-rise heading */
+.lx-land-fade {
+  opacity: 0;
+  animation: lx-land-fade 500ms cubic-bezier(0.16, 1, 0.3, 1) var(--lx-d, 0ms) forwards;
+}
+@keyframes lx-land-fade {
+  to {
+    opacity: 1;
+  }
+}
 
 /* ---------- nav ---------- */
 
@@ -435,6 +445,15 @@ body.lx {
 /* Wide photo banners between sections (The Process) */
 .lx-banner-band {
   padding-block: 0 120px;
+}
+/* The Process: banner directly under the page hero */
+.lx-hero-banner {
+  padding-top: 64px;
+}
+@media (max-width: 767px) {
+  .lx-hero-banner {
+    padding-top: 40px;
+  }
 }
 .lx-banner-band-top {
   padding-top: 120px;
@@ -1002,6 +1021,10 @@ body.lx {
 @media (prefers-reduced-motion: reduce) {
   .lx-line > span {
     transform: none;
+    animation: none;
+  }
+  .lx-land-fade {
+    opacity: 1;
     animation: none;
   }
   .lx-curtain {
