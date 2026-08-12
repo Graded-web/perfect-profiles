@@ -438,6 +438,15 @@ body.lx {
 .lx-section-tight {
   padding-top: 48px;
 }
+/* Portfolio gallery: sits directly under the page hero, wants less air */
+.lx-section-gallery {
+  padding-top: 88px;
+}
+@media (max-width: 767px) {
+  .lx-section-gallery {
+    padding-top: 56px;
+  }
+}
 @media (max-width: 767px) {
   .lx-section-tight {
     padding-top: 32px;
