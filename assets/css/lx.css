@@ -89,6 +89,10 @@ body.lx {
 .lx-kicker-dark {
   color: #c9a29a;
 }
+/* Homepage hero tagline sits below the headline, so the gap flips on top */
+.lx-hero-head .lx-kicker {
+  margin: 20px 0 0;
+}
 
 /* One title size everywhere. The 3rem cap is set by the homepage hero:
    its ~22ch three-line headline must hold one row per line inside the
@@ -314,11 +318,11 @@ body.lx {
 }
 
 .lx-page-hero {
-  padding-block: 88px 0;
+  padding-block: 48px 0;
 }
 @media (max-width: 767px) {
   .lx-page-hero {
-    padding-block: 56px 0;
+    padding-block: 32px 0;
   }
 }
 .lx-page-hero .lx-hero-sub {
@@ -429,6 +433,14 @@ body.lx {
 @media (max-width: 767px) {
   .lx-section {
     padding-block: 72px;
+  }
+}
+.lx-section-tight {
+  padding-top: 48px;
+}
+@media (max-width: 767px) {
+  .lx-section-tight {
+    padding-top: 32px;
   }
 }
 .lx-section-head {
