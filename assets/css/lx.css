@@ -893,6 +893,26 @@ body.lx {
   resize: vertical;
   min-height: 6rem;
 }
+/* Inline validation: the error sits absolutely in the field's bottom margin
+   so .lx-field::after keeps anchoring its underline to the input, and
+   .lx-field-invalid widens that margin so the message never overlaps the
+   next field. */
+.lx-field input[aria-invalid='true'] {
+  border-bottom-color: var(--lx-oxblood);
+}
+.lx-field-error {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin: 8px 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--lx-oxblood);
+}
+.lx-field-invalid {
+  margin-bottom: 60px;
+}
 .lx-form-status {
   margin-top: 28px;
   padding: 20px 24px;
