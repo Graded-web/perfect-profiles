@@ -717,6 +717,27 @@ body.lx {
   font-weight: 500;
   font-size: 1.4rem;
 }
+/* Step details as dot points; marker matches the included-list voice */
+.lx-step-points {
+  margin-top: 10px;
+  max-width: 58ch;
+  display: grid;
+  gap: 8px;
+}
+.lx-step-points li {
+  font-size: 0.9375rem;
+  color: var(--lx-muted);
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+}
+.lx-step-points li::before {
+  content: '—';
+  font-family: var(--lx-serif);
+  font-style: italic;
+  color: var(--lx-oxblood);
+  flex: none;
+}
 
 /* ---------- included list ---------- */
 
