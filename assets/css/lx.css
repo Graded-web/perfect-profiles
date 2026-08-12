@@ -90,16 +90,17 @@ body.lx {
   color: #c9a29a;
 }
 
+/* One title size everywhere. The 3rem cap is set by the homepage hero:
+   its ~22ch three-line headline must hold one row per line inside the
+   550px column that .lx-container fixes above 1200px — 3.2rem was
+   borderline and wrapped 'brand' on large screens. */
 .lx-h1 {
   font-family: var(--lx-display);
   font-weight: 500;
-  font-size: clamp(2.9rem, 6.2vw, 5.25rem);
+  font-size: clamp(1.8rem, 3.4vw, 3rem);
   line-height: 1.04;
   letter-spacing: -0.025em;
   margin: 0;
-}
-.lx-h1-page {
-  font-size: clamp(2.4rem, 5vw, 3.8rem);
 }
 .lx-h1 em {
   font-family: var(--lx-serif);
@@ -303,13 +304,6 @@ body.lx {
 }
 .lx-hero .lx-hero-sub + .lx-hero-sub {
   margin-top: 16px;
-}
-/* Three-line headline: ~22ch lines need a smaller display size than
-   the two-word default to hold one row each. The cap must clear the
-   550px column that .lx-container fixes above 1200px — 3.2rem was
-   borderline and wrapped 'brand' on large screens. */
-.lx-hero .lx-h1 {
-  font-size: clamp(1.8rem, 3.4vw, 3rem);
 }
 .lx-hero-actions {
   margin-top: 40px;
