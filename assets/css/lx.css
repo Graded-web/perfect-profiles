@@ -1131,9 +1131,6 @@ body.lx {
 .lx-logo-set img {
   height: 24px;
   width: auto;
-  filter: grayscale(1);
-  opacity: 0.55;
-  mix-blend-mode: multiply;
 }
 .lx-logo-set img.lx-logo-tall {
   height: 38px;
