@@ -31,7 +31,7 @@ function phoneProblem(value) {
   if (digits.length < 8) {
     return hasCountryCode
       ? 'That number looks too short.'
-      : "That number looks too short — include a country code if you're outside Australia.";
+      : "That number looks too short – include a country code if you're outside Australia.";
   }
   if (digits.length > 15) return 'That number looks too long.';
   return '';
@@ -88,7 +88,7 @@ form.addEventListener('submit', async (e) => {
   if (!FORM_EMAIL) {
     status.hidden = false;
     status.textContent =
-      'Our quote form isn’t accepting submissions just yet — please check back soon.';
+      'Our quote form isn’t accepting submissions just yet – please check back soon.';
     return;
   }
 
@@ -96,7 +96,7 @@ form.addEventListener('submit', async (e) => {
   button.textContent = 'Sending…';
   const data = new FormData(form);
   const name = [data.get('first-name'), data.get('surname')].filter(Boolean).join(' ');
-  data.append('_subject', 'Quote request — ' + (name || 'Perfect Profile site'));
+  data.append('_subject', 'Quote request – ' + (name || 'Perfect Profile site'));
 
   try {
     const res = await fetch('https://formsubmit.co/ajax/' + FORM_EMAIL, {
@@ -107,12 +107,12 @@ form.addEventListener('submit', async (e) => {
     if (!res.ok) throw new Error('HTTP ' + res.status);
     status.hidden = false;
     status.textContent =
-      'Thank you — we have your details and will reply within one business day.';
+      'Thank you – we have your details and will reply within one business day.';
     form.reset();
   } catch (err) {
     status.hidden = false;
     status.textContent =
-      'Something went wrong sending your request — please try again in a moment.';
+      'Something went wrong sending your request – please try again in a moment.';
   } finally {
     button.disabled = false;
     button.textContent = 'Request a quote';
