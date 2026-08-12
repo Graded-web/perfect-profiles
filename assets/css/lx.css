@@ -352,7 +352,6 @@ body.lx {
 .lx-link-quiet:focus-visible,
 .lx-nav-links a:focus-visible,
 .lx-wordmark:focus-visible,
-.lx-footer-links a:focus-visible,
 .lx-faq summary:focus-visible {
   outline: 2px solid var(--lx-oxblood);
   outline-offset: 3px;
@@ -985,21 +984,8 @@ body.lx {
   flex-wrap: wrap;
   gap: 20px 40px;
   align-items: baseline;
-  justify-content: space-between;
-}
-.lx-footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 28px;
-}
-.lx-footer-links a {
-  font-size: 0.8125rem;
-  color: var(--lx-muted);
-  transition: color 200ms ease;
-  padding-block: 10px;
-}
-.lx-footer-links a:hover {
-  color: var(--lx-ink);
+  justify-content: center;
+  text-align: center;
 }
 .lx-footer-note {
   font-size: 0.8125rem;
