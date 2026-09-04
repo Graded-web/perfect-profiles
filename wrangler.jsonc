@@ -8,19 +8,12 @@
     "binding": "ASSETS",
     "run_worker_first": true,
     "not_found_handling": "404-page"
-  }
+  },
+  "kv_namespaces": [
+    { "binding": "QUOTES", "id": "b30ddb194fcd440d8dde051bb00bb2d6" }
+  ]
 
-  // Lead capture (POST /api/quote). Until this binding exists the page still
-  // delivers to FormSubmit from the browser — we just hold no copy of our own,
-  // so a FormSubmit failure loses the lead. To turn capture on:
-  //   1. npx wrangler kv namespace create QUOTES
-  //   2. paste the returned id below
-  //   3. uncomment this block and redeploy
-  // Read leads back with:
+  // Lead capture (POST /api/quote) storage. Read leads back with:
   //   npx wrangler kv key list --binding QUOTES --remote
   //   npx wrangler kv key get "<key>" --binding QUOTES --remote
-  //
-  // "kv_namespaces": [
-  //   { "binding": "QUOTES", "id": "PASTE_NAMESPACE_ID_HERE" }
-  // ]
 }
