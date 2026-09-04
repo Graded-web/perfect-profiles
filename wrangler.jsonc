@@ -8,15 +8,11 @@
     "binding": "ASSETS",
     "run_worker_first": true,
     "not_found_handling": "404-page"
-  },
-  "vars": {
-    // Destination inbox for quote requests. Changing it needs no code edit.
-    "QUOTE_EMAIL": "info@perfectprofile.com.au"
   }
 
-  // Lead capture (POST /api/quote). Until this binding exists the worker still
-  // relays to FormSubmit and reports honestly — it just holds no copy of its own.
-  // To turn capture on:
+  // Lead capture (POST /api/quote). Until this binding exists the page still
+  // delivers to FormSubmit from the browser — we just hold no copy of our own,
+  // so a FormSubmit failure loses the lead. To turn capture on:
   //   1. npx wrangler kv namespace create QUOTES
   //   2. paste the returned id below
   //   3. uncomment this block and redeploy

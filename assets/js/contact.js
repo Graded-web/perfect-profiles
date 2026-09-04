@@ -1,6 +1,9 @@
-// Posts to our own worker (/api/quote), which records the lead before relaying
-// it to FormSubmit. The destination inbox lives in the worker, not here.
+// Two steps, in this order: record the lead on our own worker first so it can
+// never be lost, then deliver it. Delivery has to happen here in the browser —
+// FormSubmit sits behind Cloudflare and refuses a server-side relay from our
+// worker, so the worker captures and the page delivers.
 const QUOTE_ENDPOINT = '/api/quote';
+const FORM_EMAIL = 'info@perfectprofile.com.au';
 
 const form = document.getElementById('quote-form');
 const status = form.querySelector('.lx-form-status');
@@ -88,30 +91,72 @@ form.addEventListener('submit', async (e) => {
   button.disabled = true;
   button.textContent = 'Sending…';
 
+  const data = new FormData(form);
+  const name = [data.get('first-name'), data.get('surname')].filter(Boolean).join(' ');
+  data.append('_subject', 'Quote request – ' + (name || 'Perfect Profile site'));
+  // Set Reply-To explicitly rather than relying on FormSubmit guessing from the
+  // field name, so hitting Reply in the inbox reaches the prospect.
+  data.append('_replyto', data.get('email') || '');
+
+  let captured = false;
+  let captureKey = null;
+  let rateLimited = false;
+
+  // 1. Capture first — a lead we hold is a lead we can still act on.
   try {
     const res = await fetch(QUOTE_ENDPOINT, {
       method: 'POST',
       headers: { Accept: 'application/json' },
-      body: new FormData(form),
+      body: data,
     });
-    // A 200 is not proof on its own — the worker reports the real outcome in the
-    // body, so only say "thank you" when the lead was actually captured.
     const result = await res.json().catch(() => ({}));
-    if (!res.ok || !result.ok) {
-      throw new Error(result.error || 'HTTP ' + res.status);
-    }
+    rateLimited = result.error === 'rate_limited';
+    captured = !!result.stored;
+    captureKey = result.key || null;
+  } catch (err) {
+    // Capture is best-effort; delivery below still gets its chance.
+  }
+
+  if (rateLimited) {
     status.hidden = false;
+    status.textContent =
+      'That request has already been sent – give it a moment before trying again.';
+    button.disabled = false;
+    button.textContent = 'Request a quote';
+    return;
+  }
+
+  // 2. Deliver. A 200 is not proof — FormSubmit reports the real outcome as the
+  // string "true"/"false" in the body, so read that rather than the status.
+  let delivered = false;
+  try {
+    const res = await fetch('https://formsubmit.co/ajax/' + FORM_EMAIL, {
+      method: 'POST',
+      headers: { Accept: 'application/json' },
+      body: data,
+    });
+    const body = await res.json().catch(() => ({}));
+    delivered = res.ok && String(body.success) === 'true';
+  } catch (err) {
+    delivered = false;
+  }
+
+  // 3. Tell the worker it arrived, so a stored lead isn't chased unnecessarily.
+  if (delivered && captureKey) {
+    fetch(QUOTE_ENDPOINT + '/confirm?key=' + encodeURIComponent(captureKey), {
+      method: 'POST',
+    }).catch(() => {});
+  }
+
+  status.hidden = false;
+  if (captured || delivered) {
     status.textContent =
       'Thank you – we have your details and will reply within one business day.';
     form.reset();
-  } catch (err) {
-    status.hidden = false;
+  } else {
     status.textContent =
-      err.message === 'rate_limited'
-        ? 'That request has already been sent – give it a moment before trying again.'
-        : 'Something went wrong sending your request – please call or email us and we’ll pick it up.';
-  } finally {
-    button.disabled = false;
-    button.textContent = 'Request a quote';
+      'Something went wrong sending your request – please call or email us and we’ll pick it up.';
   }
+  button.disabled = false;
+  button.textContent = 'Request a quote';
 });

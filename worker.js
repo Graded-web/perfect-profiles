@@ -1,11 +1,12 @@
 // Canonical-host enforcement: www -> apex and http -> https, then serve static assets.
-// Also owns POST /api/quote so every lead is recorded on our own infrastructure
-// before it is handed to FormSubmit — a third-party outage must never lose one.
-
-const FALLBACK_QUOTE_EMAIL = "info@perfectprofile.com.au";
-
-// Sent as Origin/Referer on the FormSubmit relay — see the note at that fetch.
-const SITE_ORIGIN = "https://perfectprofile.com.au";
+// Also owns POST /api/quote, which records every lead on our own infrastructure
+// so a FormSubmit failure can never lose one.
+//
+// Delivery deliberately stays in the browser. FormSubmit sits behind Cloudflare
+// too, and rejects server-side relays from a Worker ("...will not work in pages
+// browsed as HTML files") even with Origin/Referer set — the same request
+// succeeds from an ordinary host. So: the worker captures, the browser delivers,
+// and the client confirms delivery back here so the record stays accurate.
 
 // Enough for a long enquiry, small enough that the endpoint can't be used as a drain.
 const MAX_BODY_BYTES = 64 * 1024;
@@ -83,73 +84,46 @@ async function handleQuote(request, env) {
     }
   }
 
-  const name = [submission.fields["first-name"], submission.fields.surname]
-    .filter(Boolean)
-    .join(" ");
-
-  const relay = new FormData();
-  for (const [k, v] of Object.entries(submission.fields)) relay.append(k, v);
-  relay.append("_subject", "Quote request – " + (name || "Perfect Profile site"));
-  // Make Reply-To explicit rather than relying on FormSubmit's field-name guessing,
-  // so hitting Reply in the inbox goes to the prospect.
-  if (submission.fields.email) relay.append("_replyto", submission.fields.email);
-
-  const address = env.QUOTE_EMAIL || FALLBACK_QUOTE_EMAIL;
-  let delivered = false;
-  let relayError = "";
-  try {
-    const res = await fetch("https://formsubmit.co/ajax/" + address, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        // FormSubmit refuses requests without a browser-shaped Origin/Referer
-        // ("...will not work in pages browsed as HTML files"). The browser used
-        // to supply these; relaying server-side, we must set them ourselves.
-        Origin: SITE_ORIGIN,
-        Referer: SITE_ORIGIN + "/requestaquote",
-      },
-      body: relay,
-    });
-    // FormSubmit answers 200 even when it refuses the message, and reports the
-    // real outcome as the string "true"/"false" in the body. Status alone lies.
-    const body = await res.json().catch(() => ({}));
-    delivered = res.ok && String(body.success) === "true";
-    if (!delivered) relayError = String(body.message || "HTTP " + res.status);
-  } catch (err) {
-    relayError = String(err);
-  }
-
-  if (stored && delivered) {
-    submission.delivered = true;
-    try {
-      await store.put(key, JSON.stringify(submission));
-    } catch {
-      // The lead is already saved; a failed status update is not worth failing on.
-    }
-  }
-
-  // The visitor is told the truth: we succeeded if we hold the lead OR sent it.
-  if (stored || delivered) {
-    // Only start the clock once something actually landed, so a prospect whose
+  if (stored) {
+    // Only start the clock once the lead actually landed, so a prospect whose
     // submission failed can retry immediately instead of being locked out.
-    if (store) {
-      try {
-        await store.put(throttleKey, String(Date.now()), {
-          expirationTtl: THROTTLE_KEY_TTL,
-        });
-      } catch (err) {
-        // Never fail a captured lead over throttling — but say so, because a
-        // silent catch here once hid the throttle being disabled entirely.
-        console.error("throttle write failed", String(err));
-      }
+    try {
+      await store.put(throttleKey, String(Date.now()), {
+        expirationTtl: THROTTLE_KEY_TTL,
+      });
+    } catch (err) {
+      // Never fail a captured lead over throttling — but say so, because a
+      // silent catch here once hid the throttle being disabled entirely.
+      console.error("throttle write failed", String(err));
     }
-    return json({ ok: true, stored, delivered });
   }
 
-  // Keep the third party's error out of the response — it can echo the
-  // destination address. Visible instead via `npx wrangler tail`.
-  console.error("quote capture failed", { ip, relayError });
-  return json({ ok: false, error: "not_captured" }, 502);
+  // `key` lets the client confirm delivery afterwards. `ok` reflects capture
+  // only; the browser decides what to tell the visitor, since it also delivers.
+  return json({ ok: stored, stored, key: stored ? key : null });
+}
+
+// The browser reports back whether FormSubmit accepted the message, so a lead
+// sitting in KV can be told apart from one that actually reached the inbox.
+async function handleQuoteConfirm(request, env) {
+  const store = env.QUOTES;
+  if (!store) return json({ ok: false, error: "no_store" }, 404);
+
+  const key = new URL(request.url).searchParams.get("key") || "";
+  if (!key.startsWith("quote:")) return json({ ok: false, error: "bad_key" }, 400);
+
+  const raw = await store.get(key);
+  if (!raw) return json({ ok: false, error: "not_found" }, 404);
+
+  try {
+    const record = JSON.parse(raw);
+    record.delivered = true;
+    await store.put(key, JSON.stringify(record));
+  } catch (err) {
+    console.error("confirm write failed", String(err));
+    return json({ ok: false, error: "write_failed" }, 500);
+  }
+  return json({ ok: true });
 }
 
 export default {
@@ -179,6 +153,11 @@ export default {
       return Response.redirect(url.toString(), 301);
     }
     if (url.pathname === "/api/quote") return handleQuote(request, env);
+    if (url.pathname === "/api/quote/confirm") {
+      return request.method === "POST"
+        ? handleQuoteConfirm(request, env)
+        : json({ ok: false, error: "method_not_allowed" }, 405);
+    }
     return env.ASSETS.fetch(request);
   },
 };
