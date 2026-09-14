@@ -158,6 +158,17 @@ export default {
         ? handleQuoteConfirm(request, env)
         : json({ ok: false, error: "method_not_allowed" }, 405);
     }
-    return env.ASSETS.fetch(request);
+    const response = await env.ASSETS.fetch(request);
+    // `_headers` marks /assets/* immutable for a year, and that rule applies to
+    // the 404 page served for a missing asset too. Cached once, a wrong URL
+    // stays a 404 at the edge and in browsers long after the file ships.
+    // Errors only: a 304 carries the same header, and stamping no-store on it
+    // would make the browser evict the copy it was revalidating.
+    if (response.status >= 400 && url.pathname.startsWith("/assets/")) {
+      const headers = new Headers(response.headers);
+      headers.set("Cache-Control", "no-store");
+      return new Response(response.body, { status: response.status, headers });
+    }
+    return response;
   },
 };
